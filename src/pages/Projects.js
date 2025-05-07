@@ -1,76 +1,59 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt } from 'react-icons/fa';
-import { SiTailwindcss, SiMongodb, SiFirebase } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs } from 'react-icons/fa';
+import { SiTailwindcss, SiMongodb, SiPython, SiSpringboot,SiJenkins,SiSonarqube,SiJest, SiExpress, SiApachekafka, SiDocker ,SiCss3,SiHtml5 } from 'react-icons/si';
 import '../styles/Projects.css';
+import Parkini from '../assets/Parkini.png'; 
+import EurekaServer from '../assets/EurekaServer.png';
+import Purelife from '../assets/PureLife.png';
+import Devops from '../assets/Devops.png';
 
 const Projects = () => {
   // Catégories de filtrage
-  const categories = ['Tout', 'Frontend', 'Full Stack', 'UX/UI', 'Devops'];
+  const categories = ['Tout', 'Frontend', 'Full Stack', 'UX/UI', 'Devops', 'Microservices'];
   const [activeCategory, setActiveCategory] = useState('Tout');
 
-  // Projets exemple (à remplacer par vos propres projets)
+ 
   const projects = [
     {
       id: 1,
-      title: "E-commerce moderne",
-      description: "Une plateforme de commerce électronique complète avec panier d'achat, paiements et gestion des produits.",
-      image: "placeholder.jpg",
-      category: ["Full Stack"],
-      technologies: [<FaReact />, <FaNodeJs />, <SiMongodb />, <SiTailwindcss />],
-      githubLink: "https://github.com/username/e-commerce",
-      liveLink: "https://e-commerce-example.com"
+      title: "Parkini",
+      description: "🚗🔐 Discover Parkini – The Future of Smart Parking! 🌍📊",
+      image: Parkini,
+      category: ["Full Stack", "Devops"],
+      technologies: [<FaReact />, <FaNodeJs />, <SiMongodb />, <SiTailwindcss />, <SiPython />],
+      githubLink: "https://github.com/PiDev-2025/Parkini",
+      liveLink: "https://front-end-front-office.vercel.app"
     },
     {
       id: 2,
       title: "Application de gestion de tâches",
       description: "Application réactive pour organiser et suivre vos tâches quotidiennes avec notifications.",
-      image: "placeholder.jpg",
-      category: ["Frontend", "UX/UI"],
-      technologies: [<FaReact />, <FaJs />, <FaCss3Alt />, <SiFirebase />],
-      githubLink: "https://github.com/username/task-manager",
-      liveLink: "https://task-manager-example.com"
+      image: EurekaServer,
+      category: ["Microservices"],
+      technologies: [<SiSpringboot />, <SiExpress />, <SiApachekafka />, <SiDocker />],
+      githubLink: "https://github.com/Application-Web-Distribution-Project/Application_Web_Distibue",
     },
     {
       id: 3,
-      title: "Dashboard Analytics",
-      description: "Tableau de bord interactif avec visualisations de données en temps réel et rapports personnalisables.",
-      image: "placeholder.jpg",
+      title: "PureLife",
+      description:"Site web de santé et bien-être proposant des tendances, conseils et actualités pour un mode de vie sain et équilibré.",
+      image: Purelife,
       category: ["Frontend", "UX/UI"],
-      technologies: [<FaReact />, <SiTailwindcss />, <FaJs />],
-      githubLink: "https://github.com/username/analytics",
-      liveLink: "https://analytics-example.com"
+      technologies: [<SiHtml5 />, <SiTailwindcss />, <SiCss3 />],
+      githubLink: "https://github.com/Aymenjallouli/PureLife",
+      liveLink: "https://pure-life-aymen-jalloulis-projects.vercel.app"
     },
     {
       id: 4,
-      title: "Application de chat en temps réel",
-      description: "Application de messagerie instantanée avec salles de discussion et partage de fichiers.",
-      image: "placeholder.jpg",
-      category: ["Full Stack"],
-      technologies: [<FaReact />, <FaNodeJs />, <SiMongodb />, <FaCss3Alt />],
-      githubLink: "https://github.com/username/chat-app",
-      liveLink: "https://chat-app-example.com"
+      title: "DevopsProject",
+      description: "Pipeline CI/CD robuste pour projets professionnels avec Stack Jenkins, SonarQube, Nexus et Docker. Monitoring via Prometheus & Grafana. Objectif : Assurer qualité, fiabilité et automatisation.",
+      image: Devops,
+      category: ["Devops"],
+      technologies: [<SiJenkins />, <SiSonarqube />, <SiDocker />, <SiJest />],
+      githubLink: "https://github.com/marwaniiwael18/DEVOPS-Project/tree/Aymenjallouli_4twin3_thunder",
     },
-    {
-      id: 5,
-      title: "Application mobile de fitness",
-      description: "Application permettant de suivre vos entraînements, votre alimentation et vos progrès.",
-      image: "placeholder.jpg",
-      category: ["Mobile"],
-      technologies: [<FaReact />, <SiTailwindcss />, <SiFirebase />],
-      githubLink: "https://github.com/username/fitness-app",
-      liveLink: "https://fitness-app-example.com"
-    },
-    {
-      id: 6,
-      title: "Site vitrine d'entreprise",
-      description: "Site web moderne responsive présentant les services et l'équipe d'une entreprise.",
-      image: "placeholder.jpg",
-      category: ["Frontend", "UX/UI"],
-      technologies: [<FaReact />, <FaHtml5 />, <FaCss3Alt />],
-      githubLink: "https://github.com/username/corporate-site",
-      liveLink: "https://corporate-example.com"
-    }
+ 
   ];
 
   // Filtrage des projets par catégorie
@@ -137,16 +120,28 @@ const Projects = () => {
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
             >
               <div className="project-image-container">
-                <div className="project-image-placeholder">
-                  <span>{project.title.charAt(0)}</span>
-                </div>
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="project-image" 
+                  />
+                ) : (
+                  <div className="project-image-placeholder">
+                    <span>{project.title.charAt(0)}</span>
+                  </div>
+                )}
                 <div className="project-links">
-                  <a href={project.githubLink} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <FaGithub />
-                  </a>
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label="Site web">
-                    <FaExternalLinkAlt />
-                  </a>
+                  {project.githubLink && (
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <FaGithub />
+                    </a>
+                  )}
+                  {project.liveLink && (
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label="Site web">
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
                 </div>
               </div>
               

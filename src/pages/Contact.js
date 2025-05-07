@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -28,14 +28,25 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Simulation d'envoi de formulaire (à remplacer par une vraie intégration d'API)
+    // Prepare mailto link with form data
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(
+      `De: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `${formData.message}`
+    );
+    
+    // Open the default email client with prefilled data
+    window.location.href = `mailto:aymen.jallouli@esprit.tn?subject=${subject}&body=${body}`;
+    
+    // Show success message
     setFormStatus({
       submitted: true,
       success: true,
-      message: 'Votre message a été envoyé avec succès! Je vous répondrai dans les plus brefs délais.'
+      message: 'Votre application de messagerie est en cours d\'ouverture pour envoyer votre message.'
     });
     
-    // Réinitialisation du formulaire
+    // Reset form after submission
     setFormData({
       name: '',
       email: '',
@@ -43,7 +54,7 @@ const Contact = () => {
       message: ''
     });
     
-    // Réinitialisation du statut après 5 secondes
+    // Reset status after 5 seconds
     setTimeout(() => {
       setFormStatus({
         submitted: false,
@@ -85,7 +96,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h3>Email</h3>
-                  <p><a href="mailto:contact@example.com">contact@example.com</a></p>
+                  <p><a href="mailto:contact@example.com">aymen.jallouli@esprit.tn</a></p>
                 </div>
               </div>
               
@@ -95,7 +106,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h3>Téléphone</h3>
-                  <p><a href="tel:+33123456789">+216 29082917 </a></p>
+                  <p><a href="tel:+216 29082917">+216 29082917 </a></p>
                 </div>
               </div>
               
@@ -105,7 +116,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   <h3>Localisation</h3>
-                  <p>Paris, France</p>
+                  <p>Tunis, Ariana</p>
                 </div>
               </div>
             </div>
@@ -113,15 +124,13 @@ const Contact = () => {
             <div className="contact-social">
               <h3>Suivez-moi</h3>
               <div className="social-links">
-                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <a href="https://github.com/Aymenjallouli" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <FaGithub />
                 </a>
-                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/aymen-jallouli-713534254/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedin />
                 </a>
-                <a href="https://twitter.com/username" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                  <FaTwitter />
-                </a>
+                
               </div>
             </div>
           </motion.div>

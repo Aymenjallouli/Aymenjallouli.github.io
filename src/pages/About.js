@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCode, FaPalette, FaMobile, FaDatabase, FaServer, FaTools } from 'react-icons/fa';
+import { FaCode, FaPalette, FaDatabase, FaServer, FaTools } from 'react-icons/fa';
 import '../styles/About.css';
 
 const About = () => {
@@ -24,22 +24,18 @@ const About = () => {
     {
       category: 'Frontend',
       icon: <FaCode />,
-      items: ['HTML/CSS', 'JavaScript', 'React', 'Redux', 'Tailwind CSS', 'SASS']
+      items: ['HTML/CSS', 'JavaScript', 'React', 'Angular', 'Tailwind CSS']
     },
     {
-      category: 'Design',
+      category: 'Devops',
       icon: <FaPalette />,
-      items: ['Responsive Design', 'UI/UX', 'Figma', 'Adobe XD']
+      items: ['Jenkins', 'DockerHub', 'Nexus', 'Sonarqube', 'Kubernetes']
     },
-    {
-      category: 'Mobile',
-      icon: <FaMobile />,
-      items: ['React Native', 'Flutter', 'Mobile-first Design']
-    },
+   
     {
       category: 'Backend',
       icon: <FaServer />,
-      items: ['Node.js', 'Express', 'RESTful API', 'GraphQL']
+      items: ['Node.js & Express', 'SpringBoot', 'GraphQL']
     },
     {
       category: 'Database',
@@ -49,7 +45,7 @@ const About = () => {
     {
       category: 'Outils',
       icon: <FaTools />,
-      items: ['Git', 'GitHub', 'VS Code', 'Webpack', 'Docker', 'CI/CD']
+      items: [ 'GitHub', 'VS Code', 'Docker', 'CI/CD']
     }
   ];
 
@@ -94,25 +90,17 @@ const About = () => {
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
                   <h3>Formation</h3>
-                  <p className="timeline-period">2018 - 2022</p>
-                  <p>Diplôme d'ingénieur en informatique, spécialisation en développement web et mobile.</p>
+                  <p className="timeline-period">2020 - 2025</p>
+                  <p>Diplôme d'ingénieur en informatique, spécialisation en développement web.</p>
                 </div>
               </div>
               
-              <div className="timeline-item">
-                <div className="timeline-dot"></div>
-                <div className="timeline-content">
-                  <h3>Début de carrière</h3>
-                  <p className="timeline-period">2022 - 2023</p>
-                  <p>Développeur front-end dans une startup innovante, travaillant principalement avec React.</p>
-                </div>
-              </div>
               
               <div className="timeline-item">
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
                   <h3>Développeur Full Stack</h3>
-                  <p className="timeline-period">2023 - Présent</p>
+                  <p className="timeline-period">2025 - Présent</p>
                   <p>Développement d'applications web complètes utilisant les dernières technologies.</p>
                 </div>
               </div>

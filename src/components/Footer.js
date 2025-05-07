@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -29,16 +29,14 @@ const Footer = () => {
             <h3>Contact</h3>
             <p>N'hésitez pas à me contacter pour discuter de vos projets.</p>
             <div className="social-links">
-              <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href="https://github.com/Aymenjallouli" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <FaGithub />
               </a>
-              <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/aymen-jallouli-713534254/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FaLinkedin />
               </a>
-              <a href="https://twitter.com/username" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <FaTwitter />
-              </a>
-              <a href="mailto:contact@example.com" aria-label="Email">
+              
+              <a href="mailto:aymen.jallouli@esprit.tn" aria-label="Email">
                 <FaEnvelope />
               </a>
             </div>

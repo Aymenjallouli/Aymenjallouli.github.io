@@ -32,7 +32,7 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.6;
-  transition: var(--transition);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a {
@@ -86,6 +86,154 @@ img {
   border-radius: 2px;
 }
 
+/* Standardisation des boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 140px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white !important;
+  border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color) !important;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: #3456b8;
+  color: white !important;
+  border: 1px solid #3456b8;
+}
+
+.btn-secondary:hover {
+  background-color: #284293;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Classes d'utilité */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.py-1 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-2 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-3 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-4 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-5 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.px-1 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-2 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-3 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.px-4 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-5 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 @media screen and (max-width: 768px) {
   .section {
     padding: 3rem 0;
@@ -94,5 +242,69 @@ img {
   .section-title {
     font-size: 2rem;
     margin-bottom: 2rem;
+  }
+  
+  .btn {
+    padding: 0.7rem 1.3rem;
+    min-width: 120px;
+  }
+}
+
+/* Style des cartes */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.card-text {
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grille responsive */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
