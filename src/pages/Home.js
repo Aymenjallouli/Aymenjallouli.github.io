@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FaArrowRight, FaDownload, FaCheckCircle } from 'react-icons/fa';
 import '../styles/Home.css';
 import profileImage from '../assets/Profile.jpeg'; 
-import cvPdf from '../assets/CV_Aymen_Jallouli.pdf';
+import cvPdf from '../assets/AymenJallouli_FR.pdf';
 
 const Home = () => {
   return (
