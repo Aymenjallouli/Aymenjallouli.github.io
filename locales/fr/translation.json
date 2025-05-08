@@ -1,0 +1,133 @@
+{
+  "header": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "projects": "Projets",
+    "contact": "Contact",
+    "toggleTheme": {
+      "light": "Basculer vers le thème sombre",
+      "dark": "Basculer vers le thème clair"
+    },
+    "navMenu": "Menu de navigation"
+  },
+  "home": {
+    "greeting": "Bonjour, je suis",
+    "title": "Ingénieur & Développeur Full Stack & DevOps",
+    "description": "Spécialisé dans les architectures microservices et le développement d'applications web modernes. J'allie expertise technique et créativité pour concevoir des solutions robustes et évolutives, avec un focus sur l'automatisation et l'expérience utilisateur.",
+    "achievements": {
+      "microservices": "Expertise en architecture microservices",
+      "cicd": "Implémentation de pipelines CI/CD complets",
+      "mern": "Développement d'applications MERN stack"
+    },
+    "buttons": {
+      "projects": "Voir mes projets",
+      "contact": "Me contacter",
+      "downloadCV": "Télécharger CV"
+    },
+    "scroll": "Défiler pour explorer"
+  },
+  "about": {
+    "title": "À Propos de Moi",
+    "whoAmI": "Qui Suis-Je",
+    "bio": {
+      "part1": "Je suis Aymen Jallouli, Ingénieur Full Stack & DevOps passionné par la création d'applications modernes et évolutives. Grâce à mon expertise à la fois en technologies front-end et back-end, je crée des solutions complètes qui allient forme et fonction.",
+      "part2": "Mon parcours technique couvre divers domaines, notamment l'architecture microservices, l'infrastructure cloud et les pipelines d'intégration/déploiement continus. Je me concentre particulièrement sur la création de solutions qui sont non seulement technologiquement solides mais qui offrent également des expériences utilisateur exceptionnelles.",
+      "part3": "En dehors du codage, j'aime me tenir au courant des dernières tendances technologiques, contribuer à des projets open-source, et résoudre des problèmes complexes qui mettent au défi mes compétences et ma créativité."
+    },
+    "journey": "Mon Parcours",
+    "timeline": {
+      "education": {
+        "title": "Diplôme d'Ingénieur en Informatique",
+        "period": "2022 - 2025",
+        "description": "Études à l'École ESPRIT avec spécialisation en architecture logicielle, pratiques DevOps et systèmes distribués."
+      },
+      "developer": {
+        "title": "Ingénieur Full Stack & DevOps",
+        "period": "2023 - Présent",
+        "description": "Travail sur divers projets implémentant des architectures microservices, des pipelines CI/CD et des applications web modernes."
+      }
+    },
+    "skillsTitle": "Mes Compétences",
+    "skills": {
+      "frontend": "Développement Frontend",
+      "backend": "Développement Backend",
+      "devops": "DevOps & CI/CD",
+      "database": "Technologies de Base de Données",
+      "tools": "Outils & Environnements"
+    },
+    "content": "Contenu à propos de moi en français"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "viewProject": "Voir Projet",
+    "viewLive": "Voir le site",
+    "noResults": "Aucun projet ne correspond à la catégorie sélectionnée.",
+    "categories": {
+      "all": "Tous",
+      "frontend": "Frontend",
+      "fullStack": "Full Stack",
+      "uxUi": "UX/UI",
+      "devops": "DevOps",
+      "microservices": "Microservices"
+    },
+    "parkini": {
+      "description": "Une solution moderne pour la gestion intelligente de parkings avec détection en temps réel utilisant l'IA. Les fonctionnalités incluent la gestion des utilisateurs, la réservation de places, l'intégration des paiements et les analytiques admin."
+    },
+    "taskManager": {
+      "title": "Gestionnaire de Tâches Microservices",
+      "description": "Un système de gestion de tâches évolutif construit avec une architecture microservices Spring Boot. Fonctionnalités incluant la découverte de services avec Eureka, une passerelle API et Kafka pour la communication asynchrone."
+    },
+    "pureLife": {
+      "description": "Un site web responsive axé sur la promotion d'un mode de vie sain et de produits de bien-être, avec une interface utilisateur élégante, des animations fluides et une esthétique de design moderne."
+    },
+    "devops": {
+      "description": "Implémentation d'un pipeline CI/CD complet avec Jenkins, SonarQube, Docker et tests automatisés. Fonctionnalités incluant le déploiement automatisé et des contrôles de qualité."
+    }
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "subtitle": "Entrer en Contact",
+    "intro": "Je suis toujours ouvert à la discussion de nouveaux projets, opportunités ou collaborations. N'hésitez pas à me contacter en utilisant le formulaire ci-dessous ou via mon email ou mes réseaux sociaux.",
+    "details": {
+      "email": "Email",
+      "phone": "Téléphone",
+      "location": "Lieu",
+      "locationValue": "Tunis, Tunisie"
+    },
+    "followMe": "Suivez-moi sur",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le Message",
+      "namePlaceholder": "Votre nom",
+      "emailPlaceholder": "Votre adresse email",
+      "subjectPlaceholder": "Sujet du message",
+      "messagePlaceholder": "Tapez votre message ici..."
+    },
+    "formStatus": {
+      "success": "Votre message a été envoyé avec succès !",
+      "error": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+    },
+    "emailTemplate": {
+      "from": "De",
+      "email": "Email"
+    }
+  },
+  "footer": {
+    "tagline": "Création de solutions numériques innovantes avec des technologies modernes",
+    "navigation": "Navigation",
+    "social": "Social",
+    "contact": "Contact",
+    "location": "Tunis, Tunisie",
+    "rights": "Tous droits réservés",
+    "madeWith": "Réalisé avec",
+    "using": "utilisant"
+  },
+  "language": {
+    "en": "Anglais",
+    "fr": "Français",
+    "selector": "Langue"
+  }
+}

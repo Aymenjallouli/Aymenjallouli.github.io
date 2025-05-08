@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.099fb38c.css",
-    "main.js": "/static/js/main.8eee7eb1.js",
+    "main.css": "/static/css/main.b12b2cd9.css",
+    "main.js": "/static/js/main.9b94992c.js",
     "static/js/453.acca0757.chunk.js": "/static/js/453.acca0757.chunk.js",
+    "static/js/38.aad6e0c6.chunk.js": "/static/js/38.aad6e0c6.chunk.js",
     "static/media/PureLife.png": "/static/media/PureLife.f98da36354e3d784a21d.png",
     "static/media/Parkini.png": "/static/media/Parkini.8d9c2eb2790672e1040e.png",
-    "static/media/AymenJallouli_FR.pdf": "/static/media/AymenJallouli_FR.eaf54cbc00d5b6dd2f48.pdf",
+    "static/media/AymenJallouli_FR.pdf": "/static/media/AymenJallouli_FR.c15b2439af1b3883823b.pdf",
+    "static/media/AymenJallouli_An.pdf": "/static/media/AymenJallouli_An.0ad26821295b2ad36d90.pdf",
     "static/media/EurekaServer.png": "/static/media/EurekaServer.96d4a613e0f8ec729063.png",
     "static/media/Profile.jpeg": "/static/media/Profile.07b400ab01fd888069e6.jpeg",
     "static/media/Devops.png": "/static/media/Devops.6924ffed64c1136a6578.png",
     "index.html": "/index.html",
-    "main.099fb38c.css.map": "/static/css/main.099fb38c.css.map",
-    "main.8eee7eb1.js.map": "/static/js/main.8eee7eb1.js.map",
-    "453.acca0757.chunk.js.map": "/static/js/453.acca0757.chunk.js.map"
+    "main.b12b2cd9.css.map": "/static/css/main.b12b2cd9.css.map",
+    "main.9b94992c.js.map": "/static/js/main.9b94992c.js.map",
+    "453.acca0757.chunk.js.map": "/static/js/453.acca0757.chunk.js.map",
+    "38.aad6e0c6.chunk.js.map": "/static/js/38.aad6e0c6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.099fb38c.css",
-    "static/js/main.8eee7eb1.js"
+    "static/css/main.b12b2cd9.css",
+    "static/js/main.9b94992c.js"
   ]
 }

@@ -1,0 +1,133 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "toggleTheme": {
+      "light": "Switch to dark mode",
+      "dark": "Switch to light mode"
+    },
+    "navMenu": "Navigation menu"
+  },
+  "home": {
+    "greeting": "Hello, I am",
+    "title": "Engineer & Full Stack & DevOps Developer",
+    "description": "Specialized in microservices architectures and modern web application development. I combine technical expertise and creativity to design robust and scalable solutions, with a focus on automation and user experience.",
+    "achievements": {
+      "microservices": "Expertise in microservices architecture",
+      "cicd": "Implementation of complete CI/CD pipelines",
+      "mern": "Development of MERN stack applications"
+    },
+    "buttons": {
+      "projects": "View my projects",
+      "contact": "Contact me",
+      "downloadCV": "Download CV"
+    },
+    "scroll": "Scroll to explore"
+  },
+  "about": {
+    "title": "About Me",
+    "whoAmI": "Who Am I",
+    "bio": {
+      "part1": "I am Aymen Jallouli, a Full Stack & DevOps Engineer with a passion for building modern and scalable applications. With expertise in both front-end and back-end technologies, I create comprehensive solutions that marry form and function.",
+      "part2": "My technical journey spans various domains including microservices architecture, cloud infrastructure, and continuous integration/deployment pipelines. I'm particularly focused on creating solutions that are not only technologically sound but also provide exceptional user experiences.",
+      "part3": "Outside of coding, I enjoy staying up-to-date with the latest technological trends, contributing to open-source projects, and solving complex problems that challenge my skills and creativity."
+    },
+    "journey": "My Journey",
+    "timeline": {
+      "education": {
+        "title": "Software Engineering Degree",
+        "period": "2022 - 2025",
+        "description": "Studied at ESPRIT School of Engineering with a focus on software architecture, DevOps practices, and distributed systems."
+      },
+      "developer": {
+        "title": "Full Stack & DevOps Engineer",
+        "period": "2023 - Present",
+        "description": "Working on various projects implementing microservices architectures, CI/CD pipelines, and modern web applications."
+      }
+    },
+    "skillsTitle": "My Skills",
+    "skills": {
+      "frontend": "Frontend Development",
+      "backend": "Backend Development",
+      "devops": "DevOps & CI/CD",
+      "database": "Database Technologies",
+      "tools": "Tools & Environments"
+    },
+    "content": "About me content in English"
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewProject": "View Project",
+    "viewLive": "View live site",
+    "noResults": "No projects match the selected category.",
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "fullStack": "Full Stack",
+      "uxUi": "UX/UI",
+      "devops": "DevOps",
+      "microservices": "Microservices"
+    },
+    "parkini": {
+      "description": "A modern solution for smart parking management with real-time detection using AI. Features include user management, spot reservation, payment integration, and admin analytics."
+    },
+    "taskManager": {
+      "title": "Task Manager Microservices",
+      "description": "A scalable task management system built with Spring Boot microservices architecture. Features service discovery with Eureka, API gateway, and Kafka for asynchronous communication."
+    },
+    "pureLife": {
+      "description": "A responsive website focused on promoting healthy living and wellness products, featuring an elegant UI with smooth animations and a modern design aesthetic."
+    },
+    "devops": {
+      "description": "Implementation of a complete CI/CD pipeline with Jenkins, SonarQube, Docker, and automated testing. Features automated deployment and quality gate controls."
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Get In Touch",
+    "intro": "I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out using the form below or via my email or social media.",
+    "details": {
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "locationValue": "Tunis, Tunisia"
+    },
+    "followMe": "Follow Me On",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Your email address",
+      "subjectPlaceholder": "Message subject",
+      "messagePlaceholder": "Type your message here..."
+    },
+    "formStatus": {
+      "success": "Your message has been sent successfully!",
+      "error": "There was an error sending your message. Please try again."
+    },
+    "emailTemplate": {
+      "from": "From",
+      "email": "Email"
+    }
+  },
+  "footer": {
+    "tagline": "Building innovative digital solutions with modern technologies",
+    "navigation": "Navigation",
+    "social": "Social",
+    "contact": "Contact",
+    "location": "Tunis, Tunisia",
+    "rights": "All rights reserved",
+    "madeWith": "Made with",
+    "using": "using"
+  },
+  "language": {
+    "en": "English",
+    "fr": "French",
+    "selector": "Language"
+  }
+}
