@@ -9,8 +9,7 @@
       "dark": "Switch to light mode"
     },
     "navMenu": "Navigation menu"
-  },
-  "home": {
+  },  "home": {
     "greeting": "Hello, I am",
     "title": "Engineer & Full Stack & DevOps Developer",
     "description": "Specialized in microservices architectures and modern web application development. I combine technical expertise and creativity to design robust and scalable solutions, with a focus on automation and user experience.",
@@ -23,6 +22,21 @@
       "projects": "View my projects",
       "contact": "Contact me",
       "downloadCV": "Download CV"
+    },
+    "services": {
+      "title": "Specialized Services",
+      "webdev": {
+        "title": "Web Development",
+        "description": "Modern and high-performance applications with the latest technologies"
+      },
+      "microservices": {
+        "title": "Microservices Architecture",
+        "description": "Design of scalable and highly available systems"
+      },
+      "devops": {
+        "title": "DevOps & CI/CD",
+        "description": "Deployment automation for continuous delivery"
+      }
     },
     "scroll": "Scroll to explore"
   },
