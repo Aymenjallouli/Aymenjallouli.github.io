@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.07b158ab.css",
-    "main.js": "/static/js/main.40ddc557.js",
+    "main.js": "/static/js/main.21d8ba6d.js",
     "static/js/453.acca0757.chunk.js": "/static/js/453.acca0757.chunk.js",
     "static/js/38.aad6e0c6.chunk.js": "/static/js/38.aad6e0c6.chunk.js",
     "static/media/PureLife.png": "/static/media/PureLife.f98da36354e3d784a21d.png",
     "static/media/Parkini.png": "/static/media/Parkini.8d9c2eb2790672e1040e.png",
+    "static/media/Dashboard.png": "/static/media/Dashboard.78cef32f2285bff71c1b.png",
     "static/media/AymenJallouli_FR.pdf": "/static/media/AymenJallouli_FR.c15b2439af1b3883823b.pdf",
     "static/media/AymenJallouli_An.pdf": "/static/media/AymenJallouli_An.0ad26821295b2ad36d90.pdf",
     "static/media/EurekaServer.png": "/static/media/EurekaServer.96d4a613e0f8ec729063.png",
@@ -13,12 +14,12 @@
     "static/media/Devops.png": "/static/media/Devops.6924ffed64c1136a6578.png",
     "index.html": "/index.html",
     "main.07b158ab.css.map": "/static/css/main.07b158ab.css.map",
-    "main.40ddc557.js.map": "/static/js/main.40ddc557.js.map",
+    "main.21d8ba6d.js.map": "/static/js/main.21d8ba6d.js.map",
     "453.acca0757.chunk.js.map": "/static/js/453.acca0757.chunk.js.map",
     "38.aad6e0c6.chunk.js.map": "/static/js/38.aad6e0c6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.07b158ab.css",
-    "static/js/main.40ddc557.js"
+    "static/js/main.21d8ba6d.js"
   ]
 }

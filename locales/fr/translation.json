@@ -9,7 +9,8 @@
       "dark": "Basculer vers le thème clair"
     },
     "navMenu": "Menu de navigation"
-  },  "home": {
+  },
+  "home": {
     "greeting": "Bonjour, je suis",
     "title": "Ingénieur & Développeur Full Stack & DevOps",
     "description": "Spécialisé dans les architectures microservices et le développement d'applications web modernes. J'allie expertise technique et créativité pour concevoir des solutions robustes et évolutives, avec un focus sur l'automatisation et l'expérience utilisateur.",
@@ -22,21 +23,6 @@
       "projects": "Voir mes projets",
       "contact": "Me contacter",
       "downloadCV": "Télécharger CV"
-    },
-    "services": {
-      "title": "Services spécialisés",
-      "webdev": {
-        "title": "Développement Web",
-        "description": "Applications modernes et performantes avec les dernières technologies"
-      },
-      "microservices": {
-        "title": "Architecture Microservices",
-        "description": "Conception de systèmes évolutifs et hautement disponibles"
-      },
-      "devops": {
-        "title": "DevOps & CI/CD",
-        "description": "Automatisation du déploiement pour une livraison continue"
-      }
     },
     "scroll": "Défiler pour explorer"
   },
@@ -52,12 +38,12 @@
     "timeline": {
       "education": {
         "title": "Diplôme d'Ingénieur en Informatique",
-        "period": "2020 - 2025",
+        "period": "2022 - 2025",
         "description": "Études à l'École ESPRIT avec spécialisation en architecture logicielle, pratiques DevOps et systèmes distribués."
       },
       "developer": {
         "title": "Ingénieur Full Stack & DevOps",
-        "period": "2025 - Présent",
+        "period": "2023 - Présent",
         "description": "Travail sur divers projets implémentant des architectures microservices, des pipelines CI/CD et des applications web modernes."
       }
     },
@@ -77,12 +63,12 @@
     "viewLive": "Voir le site",
     "noResults": "Aucun projet ne correspond à la catégorie sélectionnée.",
     "categories": {
-      "all": "Tous",
-      "frontend": "Frontend",
+      "all": "Tous",      "frontend": "Frontend",
       "fullStack": "Full Stack",
       "uxUi": "UX/UI",
       "devops": "DevOps",
-      "microservices": "Microservices"
+      "microservices": "Microservices",
+      "AI": "Intelligence Artificielle"
     },
     "parkini": {
       "description": "Une solution moderne pour la gestion intelligente de parkings avec détection en temps réel utilisant l'IA. Les fonctionnalités incluent la gestion des utilisateurs, la réservation de places, l'intégration des paiements et les analytiques admin."
@@ -93,9 +79,11 @@
     },
     "pureLife": {
       "description": "Un site web responsive axé sur la promotion d'un mode de vie sain et de produits de bien-être, avec une interface utilisateur élégante, des animations fluides et une esthétique de design moderne."
-    },
-    "devops": {
+    },    "devops": {
       "description": "Implémentation d'un pipeline CI/CD complet avec Jenkins, SonarQube, Docker et tests automatisés. Fonctionnalités incluant le déploiement automatisé et des contrôles de qualité."
+    },
+    "Ai-Dashboard": {
+      "description": "Un tableau de bord intelligent avec des modèles d'IA développés en Python pour la prédiction de la durée de stationnement, du taux d'occupation et le clustering des utilisateurs. Dispose d'une interface frontend moderne en React avec des composants Material UI pour la visualisation et l'analyse des données."
     }
   },
   "contact": {
