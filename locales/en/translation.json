@@ -64,11 +64,11 @@
     "noResults": "No projects match the selected category.",
     "categories": {
       "all": "All",      "frontend": "Frontend",
-      "fullStack": "Full Stack",
-      "uxUi": "UX/UI",
+      "fullStack": "Full Stack",      "uxUi": "UX/UI",
       "devops": "DevOps",
       "microservices": "Microservices",
-      "AI": "Artificial Intelligence"
+      "AI": "Artificial Intelligence",
+      "sustainability": "Sustainability"
     },
     "parkini": {
       "description": "A modern solution for smart parking management with real-time detection using AI. Features include user management, spot reservation, payment integration, and admin analytics."
@@ -81,9 +81,11 @@
       "description": "A responsive website focused on promoting healthy living and wellness products, featuring an elegant UI with smooth animations and a modern design aesthetic."
     },    "devops": {
       "description": "Implementation of a complete CI/CD pipeline with Jenkins, SonarQube, Docker, and automated testing. Features automated deployment and quality gate controls."
-    },
-    "Ai-Dashboard": {
+    },    "Ai-Dashboard": {
       "description": "An intelligent dashboard with AI models built in Python for predicting parking duration, occupancy rate, and user clustering. Features a modern React front-end with Material UI components for data visualization and analytics."
+    },
+    "careerPulse": {
+      "description": "An application for calculating and visualizing carbon footprints related to academic and professional activities. Built with React, Express, and PostgreSQL, and deployed on Render."
     }
   },
   "contact": {

@@ -64,11 +64,11 @@
     "noResults": "Aucun projet ne correspond à la catégorie sélectionnée.",
     "categories": {
       "all": "Tous",      "frontend": "Frontend",
-      "fullStack": "Full Stack",
-      "uxUi": "UX/UI",
+      "fullStack": "Full Stack",      "uxUi": "UX/UI",
       "devops": "DevOps",
       "microservices": "Microservices",
-      "AI": "Intelligence Artificielle"
+      "AI": "Intelligence Artificielle",
+      "sustainability": "Développement Durable"
     },
     "parkini": {
       "description": "Une solution moderne pour la gestion intelligente de parkings avec détection en temps réel utilisant l'IA. Les fonctionnalités incluent la gestion des utilisateurs, la réservation de places, l'intégration des paiements et les analytiques admin."
@@ -81,9 +81,11 @@
       "description": "Un site web responsive axé sur la promotion d'un mode de vie sain et de produits de bien-être, avec une interface utilisateur élégante, des animations fluides et une esthétique de design moderne."
     },    "devops": {
       "description": "Implémentation d'un pipeline CI/CD complet avec Jenkins, SonarQube, Docker et tests automatisés. Fonctionnalités incluant le déploiement automatisé et des contrôles de qualité."
-    },
-    "Ai-Dashboard": {
+    },    "Ai-Dashboard": {
       "description": "Un tableau de bord intelligent avec des modèles d'IA développés en Python pour la prédiction de la durée de stationnement, du taux d'occupation et le clustering des utilisateurs. Dispose d'une interface frontend moderne en React avec des composants Material UI pour la visualisation et l'analyse des données."
+    },
+    "careerPulse": {
+      "description": "Une application pour calculer et visualiser l'empreinte carbone liée aux activités académiques et professionnelles. Développée avec React, Express et PostgreSQL, et déployée sur Render."
     }
   },
   "contact": {
