@@ -61,14 +61,14 @@
     "title": "My Projects",
     "viewProject": "View Project",
     "viewLive": "View live site",
-    "noResults": "No projects match the selected category.",
-    "categories": {
+    "noResults": "No projects match the selected category.",    "categories": {
       "all": "All",      "frontend": "Frontend",
       "fullStack": "Full Stack",      "uxUi": "UX/UI",
       "devops": "DevOps",
       "microservices": "Microservices",
       "AI": "Artificial Intelligence",
-      "sustainability": "Sustainability"
+      "sustainability": "Sustainability",
+      "automation": "Automation"
     },
     "parkini": {
       "description": "A modern solution for smart parking management with real-time detection using AI. Features include user management, spot reservation, payment integration, and admin analytics."
@@ -83,9 +83,17 @@
       "description": "Implementation of a complete CI/CD pipeline with Jenkins, SonarQube, Docker, and automated testing. Features automated deployment and quality gate controls."
     },    "Ai-Dashboard": {
       "description": "An intelligent dashboard with AI models built in Python for predicting parking duration, occupancy rate, and user clustering. Features a modern React front-end with Material UI components for data visualization and analytics."
-    },
-    "careerPulse": {
+    },    "careerPulse": {
       "description": "An application for calculating and visualizing carbon footprints related to academic and professional activities. Built with React, Express, and PostgreSQL, and deployed on Render."
+    },    "convertisseur": {
+      "description": "A full-stack web application for converting different file types (PDF, images, documents). Features an intuitive drag-and-drop interface, file preview, and responsive design. Built with React, Python, and FastAPI."
+    },    "translator": {
+      "description": "Modern translation application based on microservices architecture with automatic language detection. Built with React, Spring Boot, and Kubernetes for a scalable and resilient solution. Integrates LibreTranslate for open-source translation services."
+    },    "modernStore": {
+      "description": "Modern e-commerce interface with elegant black and white design. Built with React and Tailwind CSS, featuring a product catalog with advanced filters and responsive layout showcase."
+    },
+    "jobScrapper": {
+      "description": "Advanced web scraping application for automated job extraction from multiple platforms. Built with Python, FastAPI, and React, featuring real-time data scraping, smart filtering, export capabilities, and a modern dashboard for job market analysis."
     }
   },
   "contact": {

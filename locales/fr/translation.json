@@ -61,14 +61,14 @@
     "title": "Mes Projets",
     "viewProject": "Voir Projet",
     "viewLive": "Voir le site",
-    "noResults": "Aucun projet ne correspond à la catégorie sélectionnée.",
-    "categories": {
+    "noResults": "Aucun projet ne correspond à la catégorie sélectionnée.",    "categories": {
       "all": "Tous",      "frontend": "Frontend",
       "fullStack": "Full Stack",      "uxUi": "UX/UI",
       "devops": "DevOps",
       "microservices": "Microservices",
       "AI": "Intelligence Artificielle",
-      "sustainability": "Développement Durable"
+      "sustainability": "Développement Durable",
+      "automation": "Automatisation"
     },
     "parkini": {
       "description": "Une solution moderne pour la gestion intelligente de parkings avec détection en temps réel utilisant l'IA. Les fonctionnalités incluent la gestion des utilisateurs, la réservation de places, l'intégration des paiements et les analytiques admin."
@@ -83,9 +83,17 @@
       "description": "Implémentation d'un pipeline CI/CD complet avec Jenkins, SonarQube, Docker et tests automatisés. Fonctionnalités incluant le déploiement automatisé et des contrôles de qualité."
     },    "Ai-Dashboard": {
       "description": "Un tableau de bord intelligent avec des modèles d'IA développés en Python pour la prédiction de la durée de stationnement, du taux d'occupation et le clustering des utilisateurs. Dispose d'une interface frontend moderne en React avec des composants Material UI pour la visualisation et l'analyse des données."
-    },
-    "careerPulse": {
+    },    "careerPulse": {
       "description": "Une application pour calculer et visualiser l'empreinte carbone liée aux activités académiques et professionnelles. Développée avec React, Express et PostgreSQL, et déployée sur Render."
+    },    "convertisseur": {
+      "description": "Une application web full-stack permettant de convertir différents types de fichiers (PDF, images, documents). Interface intuitive avec glisser-déposer, prévisualisation des fichiers et design responsive. Développée avec React, Python et FastAPI."
+    },    "translator": {
+      "description": "Application de traduction moderne basée sur une architecture microservices avec détection automatique de langue. Développée avec React, Spring Boot, et Kubernetes pour une solution scalable et résiliente. Intègre LibreTranslate pour un service de traduction open-source."
+    },    "modernStore": {
+      "description": "Interface e-commerce moderne et élégante avec design noir et blanc. Développée avec React et Tailwind CSS, elle présente un catalogue de produits avec filtres avancés et un design responsive soigné."
+    },
+    "jobScrapper": {
+      "description": "Application avancée de web scraping pour l'extraction automatisée d'offres d'emploi depuis plusieurs plateformes. Développée avec Python, FastAPI et React, avec scraping en temps réel, filtrage intelligent, capacités d'export et un tableau de bord moderne pour l'analyse du marché de l'emploi."
     }
   },
   "contact": {
