@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.07b158ab.css",
-    "main.js": "/static/js/main.2a2fe9cb.js",
+    "main.js": "/static/js/main.3dedc0b1.js",
     "static/js/453.acca0757.chunk.js": "/static/js/453.acca0757.chunk.js",
     "static/js/38.aad6e0c6.chunk.js": "/static/js/38.aad6e0c6.chunk.js",
     "static/media/Store.png": "/static/media/Store.8adaf8c68a510c4f5a26.png",
@@ -11,20 +11,20 @@
     "static/media/Parkini.png": "/static/media/Parkini.8d9c2eb2790672e1040e.png",
     "static/media/Dashboard.png": "/static/media/Dashboard.78cef32f2285bff71c1b.png",
     "static/media/Translator.png": "/static/media/Translator.86fd2f03b5403978c33b.png",
-    "static/media/AymenJallouli_FR.pdf": "/static/media/AymenJallouli_FR.c41a2e0441e63ce81f09.pdf",
-    "static/media/AymenJallouli_An.pdf": "/static/media/AymenJallouli_An.41c007781b4d2fac882c.pdf",
+    "static/media/AymenJallouli_FR.pdf": "/static/media/AymenJallouli_FR.20ab3d4905b12cbce413.pdf",
+    "static/media/AymenJallouli_AN.pdf": "/static/media/AymenJallouli_AN.0bd76600f74abaa1a608.pdf",
     "static/media/EurekaServer.png": "/static/media/EurekaServer.96d4a613e0f8ec729063.png",
     "static/media/WebScrapper.png": "/static/media/WebScrapper.082310d51c8aa80512ec.png",
     "static/media/Profile.jpeg": "/static/media/Profile.07b400ab01fd888069e6.jpeg",
     "static/media/Devops.png": "/static/media/Devops.6924ffed64c1136a6578.png",
     "index.html": "/index.html",
     "main.07b158ab.css.map": "/static/css/main.07b158ab.css.map",
-    "main.2a2fe9cb.js.map": "/static/js/main.2a2fe9cb.js.map",
+    "main.3dedc0b1.js.map": "/static/js/main.3dedc0b1.js.map",
     "453.acca0757.chunk.js.map": "/static/js/453.acca0757.chunk.js.map",
     "38.aad6e0c6.chunk.js.map": "/static/js/38.aad6e0c6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.07b158ab.css",
-    "static/js/main.2a2fe9cb.js"
+    "static/js/main.3dedc0b1.js"
   ]
 }
