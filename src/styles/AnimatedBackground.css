@@ -1,0 +1,135 @@
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 15% -10%, rgba(124, 92, 255, 0.18), transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, rgba(34, 211, 238, 0.14), transparent 55%),
+    radial-gradient(900px 900px at 50% 120%, rgba(192, 38, 211, 0.12), transparent 60%),
+    var(--bg-base);
+  transition: background-color 0.5s ease;
+}
+
+/* Slowly drifting aurora wash */
+.aurora-mesh {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(40% 40% at 30% 30%, rgba(124, 92, 255, 0.35), transparent 70%),
+    radial-gradient(35% 35% at 70% 40%, rgba(34, 211, 238, 0.28), transparent 70%),
+    radial-gradient(45% 45% at 50% 75%, rgba(157, 123, 255, 0.22), transparent 70%);
+  filter: blur(60px);
+  opacity: 0.7;
+  animation: meshDrift 24s ease-in-out infinite alternate;
+}
+
+body.light .aurora-mesh {
+  opacity: 0.45;
+}
+
+@keyframes meshDrift {
+  0% {
+    transform: translate3d(-4%, -2%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, 3%, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(-2%, 4%, 0) scale(1.05);
+  }
+}
+
+/* Floating glow orbs */
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 460px;
+  height: 460px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.85), transparent 70%);
+  animation: float1 18s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 380px;
+  height: 380px;
+  top: 30%;
+  right: -120px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.7), transparent 70%);
+  animation: float2 22s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 420px;
+  height: 420px;
+  bottom: -140px;
+  left: 35%;
+  background: radial-gradient(circle, rgba(192, 38, 211, 0.6), transparent 70%);
+  animation: float3 26s ease-in-out infinite;
+}
+
+body.light .aurora-orb {
+  opacity: 0.3;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(60px, 80px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-80px, 50px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -70px); }
+}
+
+/* Faint perspective grid */
+.aurora-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+body.light .aurora-grid {
+  background-image:
+    linear-gradient(to right, rgba(30, 27, 75, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 27, 75, 0.05) 1px, transparent 1px);
+}
+
+/* Subtle grain for a premium, less-flat feel */
+.aurora-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+  .aurora-orb { filter: blur(50px); }
+  .aurora-mesh { filter: blur(45px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-mesh,
+  .aurora-orb {
+    animation: none;
+  }
+}

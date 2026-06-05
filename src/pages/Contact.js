@@ -67,14 +67,15 @@ const Contact = () => {
   return (
     <section className="contact-section section">
       <div className="container">
-        <motion.h1 
-          className="section-title"
+        <motion.div
+          className="section-head"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Contactez-Moi
-        </motion.h1>
+          <span className="eyebrow">Restons en contact</span>
+          <h1 className="section-title">Contactez-Moi</h1>
+        </motion.div>
         
         <div className="contact-container">
           <motion.div 

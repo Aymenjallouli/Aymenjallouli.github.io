@@ -1,19 +1,34 @@
 .about-section {
-  padding-top: 100px;
+  padding-top: 120px;
+}
+
+.section-head {
+  text-align: center;
+}
+
+.section-head .section-title {
+  margin-bottom: 3.5rem;
 }
 
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-bio {
+  padding: 2.4rem;
+  border-radius: 20px;
 }
 
 .about-bio h2,
 .about-skills h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
+  color: var(--heading-color);
 }
 
 .about-bio h2::after,
@@ -22,134 +37,152 @@
   position: absolute;
   bottom: -8px;
   left: 0;
-  width: 60px;
+  width: 56px;
   height: 3px;
-  background-color: var(--primary-color);
+  background: var(--gradient-brand);
+  border-radius: 3px;
 }
 
 .about-bio p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
   line-height: 1.8;
-  color: var(--text-color);
+  color: var(--text-muted);
 }
 
-/* Timeline styles */
+/* Timeline */
 .timeline {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   position: relative;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  top: 40px;
-  left: 6px;
-  height: calc(100% - 80px);
+  top: 56px;
+  left: 7px;
+  height: calc(100% - 90px);
   width: 2px;
-  background-color: var(--border-color);
+  background: linear-gradient(180deg, var(--violet), var(--cyan));
+  opacity: 0.5;
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 30px;
+  padding-left: 34px;
   margin-bottom: 2rem;
 }
 
 .timeline-dot {
   position: absolute;
   left: 0;
-  top: 7px;
-  width: 14px;
-  height: 14px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background-color: var(--primary-color);
-  border: 3px solid var(--background-color);
+  background: var(--gradient-brand);
+  box-shadow: 0 0 0 4px var(--bg-base), var(--glow);
   z-index: 1;
 }
 
 .timeline-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: var(--heading-color);
 }
 
 .timeline-period {
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem !important;
+  font-weight: 600;
+  font-family: var(--font-display);
 }
 
-/* Skills styles */
+.timeline-content > p:last-child {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Skills */
 .skills-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1.4rem;
+  perspective: 1000px;
 }
 
 .skill-group {
-  background-color: var(--card-bg);
-  border-radius: 10px;
+  background: var(--card-bg);
+  border-radius: 18px;
   padding: 1.5rem;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-group:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border-color: rgba(124, 92, 255, 0.45);
+  box-shadow: var(--shadow-lg), var(--glow);
 }
 
 .skill-header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .skill-icon {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(52, 152, 219, 0.1);
-  color: var(--primary-color);
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  background: var(--gradient-brand);
+  color: #fff;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
   margin-right: 1rem;
+  box-shadow: var(--glow);
 }
 
 .skill-header h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
+  color: var(--heading-color);
 }
 
 .skill-list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .skill-list li {
   position: relative;
-  padding-left: 15px;
-  font-size: 0.95rem;
+  padding-left: 18px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
 }
 
 .skill-list li::before {
-  content: '•';
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--primary-color);
-  font-weight: bold;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
 }
 
 @media screen and (max-width: 992px) {
   .about-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
-  
   .about-skills {
     order: -1;
   }
@@ -159,8 +192,7 @@
   .skills-container {
     grid-template-columns: 1fr;
   }
-  
   .skill-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }

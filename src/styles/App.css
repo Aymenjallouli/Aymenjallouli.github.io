@@ -2,14 +2,18 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  isolation: isolate;
 }
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Pour laisser de l'espace pour le header fixe */
+  padding-top: 80px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Animation de transition entre les pages */
+/* Page transitions */
 .fade-enter {
   opacity: 0;
 }
@@ -25,64 +29,40 @@
   transition: opacity 300ms;
 }
 
-/* Classes d'utilité */
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  font-weight: 500;
-  text-align: center;
-  transition: var(--transition);
-  border: none;
+/* Shared 3D tilt card primitives (used by TiltCard.js) */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
 }
 
-.btn-primary:hover {
-  background-color: var(--secondary-color);
-  color: white;
+.tilt-card:hover .tilt-glare {
+  opacity: 1;
 }
 
-.btn-outline {
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+/* Lift the inner content slightly in 3D space for depth */
+.tilt-inner {
+  transform: translateZ(40px);
 }
 
-.btn-outline:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-/* Cartes de projet */
-.card {
-  background-color: var(--card-bg);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Grille responsive */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card {
+    transform: none !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-  
   .main-content {
     padding-top: 70px;
   }
