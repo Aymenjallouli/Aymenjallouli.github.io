@@ -4,11 +4,17 @@ import { motion } from 'framer-motion';
 import { FaArrowRight, FaDownload, FaCheckCircle } from 'react-icons/fa';
 import '../styles/Home.css';
 import TiltCard from '../components/TiltCard';
+import { useLanguage } from '../i18n/LanguageContext';
 import profileImage from '../assets/Profile.png';
-import cvPdf from '../assets/AymenJallouli_FR.pdf';
+import cvFr from '../assets/Aymen_Jallouli_CV_FR.pdf';
+import cvEn from '../assets/Aymen_Jallouli_CV_EN.pdf';
 
 const Home = () => {
-  const badges = ['React', 'Next.js', 'TypeScript', 'Angular', 'Node.js', 'Spring Boot', 'IA', 'DevOps', 'Docker', 'Kubernetes', 'MongoDB', 'CI/CD'];
+  const { lang, t } = useLanguage();
+  const badges = ['React', 'Next.js', 'TypeScript', 'Django', 'Node.js', 'Spring Boot', 'IA', 'AWS', 'Docker', 'Kubernetes', 'MongoDB', 'CI/CD'];
+
+  const cvFile = lang === 'en' ? cvEn : cvFr;
+  const cvName = lang === 'en' ? 'Aymen_Jallouli_CV_EN.pdf' : 'Aymen_Jallouli_CV_FR.pdf';
 
   return (
     <section className="home-section">
@@ -25,18 +31,14 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5 }}
           >
-            <span className="status-dot" /> Disponible pour un stage / des opportunités
+            <span className="status-dot" /> {t('home.status')}
           </motion.span>
 
           <h1 className="home-greeting">
-            Bonjour, je suis <span className="gradient-text">Aymen Jallouli</span>
+            {t('home.greeting')} <span className="gradient-text">{t('home.name')}</span>
           </h1>
-          <h2 className="home-title">Ingénieur &amp; Développeur Full Stack &amp; DevOps</h2>
-          <p className="home-description">
-            Spécialisé dans les architectures microservices et le développement d'applications web modernes.
-            J'allie expertise technique et créativité pour concevoir des solutions robustes et évolutives,
-            avec un focus sur l'automatisation et l'expérience utilisateur.
-          </p>
+          <h2 className="home-title">{t('home.title')}</h2>
+          <p className="home-description">{t('home.description')}</p>
 
           <motion.div
             className="key-achievements"
@@ -44,29 +46,23 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <div className="achievement-item">
-              <FaCheckCircle className="achievement-icon" />
-              <p>Expertise en architecture microservices</p>
-            </div>
-            <div className="achievement-item">
-              <FaCheckCircle className="achievement-icon" />
-              <p>Implémentation de pipelines CI/CD complets</p>
-            </div>
-            <div className="achievement-item">
-              <FaCheckCircle className="achievement-icon" />
-              <p>Développement d'applications MERN stack</p>
-            </div>
+            {t('home.achievements').map((item, i) => (
+              <div className="achievement-item" key={i}>
+                <FaCheckCircle className="achievement-icon" />
+                <p>{item}</p>
+              </div>
+            ))}
           </motion.div>
 
           <div className="home-buttons">
             <Link to="/projects" className="btn btn-primary">
-              Voir mes projets <FaArrowRight className="btn-icon" />
+              {t('home.viewProjects')} <FaArrowRight className="btn-icon" />
             </Link>
             <Link to="/contact" className="btn btn-outline">
-              Me contacter
+              {t('home.contactMe')}
             </Link>
-            <a href={cvPdf} download="CV_Aymen_Jallouli.pdf" className="btn btn-outline">
-              Télécharger CV <FaDownload className="btn-icon" />
+            <a href={cvFile} download={cvName} className="btn btn-outline">
+              {t('home.downloadCv')} <FaDownload className="btn-icon" />
             </a>
           </div>
         </motion.div>
@@ -116,7 +112,7 @@ const Home = () => {
         transition={{ delay: 1.4, duration: 0.8 }}
       >
         <div className="mouse"></div>
-        <p>Défiler pour explorer</p>
+        <p>{t('home.scroll')}</p>
       </motion.div>
     </section>
   );

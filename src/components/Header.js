@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
+import { useLanguage } from '../i18n/LanguageContext';
 import '../styles/Header.css';
 
 const Header = ({ theme, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { lang, toggleLang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
@@ -32,18 +27,28 @@ const Header = ({ theme, toggleTheme }) => {
         </Link>
 
         <div className="nav-buttons">
-          <button 
-            className="theme-toggle" 
+          <button
+            className="lang-toggle"
+            onClick={toggleLang}
+            aria-label={lang === 'fr' ? 'Switch to English' : 'Passer en français'}
+          >
+            <span className={lang === 'fr' ? 'active' : ''}>FR</span>
+            <span className="lang-sep">/</span>
+            <span className={lang === 'en' ? 'active' : ''}>EN</span>
+          </button>
+
+          <button
+            className="theme-toggle"
             onClick={toggleTheme}
-            aria-label={`Basculer vers le thème ${theme === 'light' ? 'sombre' : 'clair'}`}
+            aria-label={theme === 'light' ? 'Dark mode' : 'Light mode'}
           >
             {theme === 'light' ? <FaMoon /> : <FaSun />}
           </button>
 
-          <button 
+          <button
             className="mobile-menu-btn"
             onClick={toggleMenu}
-            aria-label="Menu de navigation"
+            aria-label="Menu"
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -53,22 +58,22 @@ const Header = ({ theme, toggleTheme }) => {
           <ul>
             <li>
               <NavLink to="/" onClick={() => setIsMenuOpen(false)}>
-                Accueil
+                {t('nav.home')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
-                À Propos
+                {t('nav.about')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/projects" onClick={() => setIsMenuOpen(false)}>
-                Projets
+                {t('nav.projects')}
               </NavLink>
             </li>
             <li>
               <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}>
-                Contact
+                {t('nav.contact')}
               </NavLink>
             </li>
           </ul>
