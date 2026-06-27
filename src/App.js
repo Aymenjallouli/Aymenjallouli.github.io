@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import CursorGlow from './components/CursorGlow';
+import ScrollToTop from './components/ScrollToTop';
 
 // Import des pages
 import Home from './pages/Home';
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className={`app ${theme}`}>
         <AnimatedBackground />
         <CursorGlow />
