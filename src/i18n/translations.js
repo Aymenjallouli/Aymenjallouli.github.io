@@ -18,6 +18,19 @@ export const translations = {
       contactMe: 'Me contacter',
       downloadCv: 'Télécharger CV',
       scroll: 'Défiler pour explorer',
+      roles: ['Développeur Full Stack', 'Ingénieur Logiciel', 'DevOps & Cloud AWS', 'Architecte Microservices'],
+      stats: [
+        { value: 3, suffix: '+', label: "Années d'expérience" },
+        { value: 20, suffix: '+', label: 'Projets livrés' },
+        { value: 12, suffix: '', label: 'Microservices en production' },
+        { value: 15, suffix: '+', label: 'API REST conçues' },
+      ],
+      featuredEyebrow: 'Travaux sélectionnés',
+      featuredTitle: 'Projets en vedette',
+      viewAll: 'Tous les projets',
+      ctaTitle: 'Construisons quelque chose de solide.',
+      ctaText: "Du prototype au déploiement cloud — je transforme les idées en produits performants et scalables.",
+      ctaButton: 'Démarrer un projet',
     },
 
     about: {
@@ -120,6 +133,19 @@ export const translations = {
       contactMe: 'Contact me',
       downloadCv: 'Download CV',
       scroll: 'Scroll to explore',
+      roles: ['Full Stack Developer', 'Software Engineer', 'DevOps & AWS Cloud', 'Microservices Architect'],
+      stats: [
+        { value: 3, suffix: '+', label: 'Years of experience' },
+        { value: 20, suffix: '+', label: 'Projects delivered' },
+        { value: 12, suffix: '', label: 'Microservices in production' },
+        { value: 15, suffix: '+', label: 'REST APIs designed' },
+      ],
+      featuredEyebrow: 'Selected work',
+      featuredTitle: 'Featured projects',
+      viewAll: 'All projects',
+      ctaTitle: "Let's build something solid.",
+      ctaText: 'From prototype to cloud deployment — I turn ideas into fast, scalable products.',
+      ctaButton: 'Start a project',
     },
 
     about: {

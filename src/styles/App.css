@@ -1,32 +1,29 @@
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   isolation: isolate;
 }
 
 .main-content {
   flex: 1;
-  padding-top: 80px;
+  padding-top: 84px;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-content);
 }
 
-/* Page transitions */
-.fade-enter {
-  opacity: 0;
-}
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms;
-}
-.fade-exit {
-  opacity: 1;
-}
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
+/* Scroll progress bar (under the header) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  transform-origin: 0 50%;
+  z-index: calc(var(--z-header) + 1);
+  pointer-events: none;
 }
 
 /* Shared 3D tilt card primitives (used by TiltCard.js) */
@@ -64,6 +61,6 @@
 
 @media screen and (max-width: 768px) {
   .main-content {
-    padding-top: 70px;
+    padding-top: 72px;
   }
 }

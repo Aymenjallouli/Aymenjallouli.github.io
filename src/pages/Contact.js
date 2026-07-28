@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 import '../styles/Contact.css';
+import Reveal from '../components/Reveal';
+import Magnetic from '../components/Magnetic';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const Contact = () => {
@@ -28,44 +30,34 @@ const Contact = () => {
   return (
     <section className="contact-section section">
       <div className="container">
-        <motion.div
-          className="section-head"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <Reveal className="section-head">
           <span className="eyebrow">{t('contact.eyebrow')}</span>
           <h1 className="section-title">{t('contact.title')}</h1>
-        </motion.div>
+        </Reveal>
 
         <div className="contact-container">
-          <motion.div
-            className="contact-info"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <Reveal className="contact-info" x={-24} y={0}>
             <h2>{t('contact.infoTitle')}</h2>
             <p className="contact-intro">{t('contact.intro')}</p>
 
             <div className="contact-details">
-              <div className="contact-item">
+              <a className="contact-item glass" href="mailto:aymen.jallouli@esprit.tn">
                 <div className="contact-icon"><FaEnvelope /></div>
                 <div className="contact-text">
                   <h3>{t('contact.emailLabel')}</h3>
-                  <p><a href="mailto:aymen.jallouli@esprit.tn">aymen.jallouli@esprit.tn</a></p>
+                  <p>aymen.jallouli@esprit.tn</p>
                 </div>
-              </div>
+              </a>
 
-              <div className="contact-item">
+              <a className="contact-item glass" href="tel:+21629082917">
                 <div className="contact-icon"><FaPhone /></div>
                 <div className="contact-text">
                   <h3>{t('contact.phoneLabel')}</h3>
-                  <p><a href="tel:+21629082917">+216 29 082 917</a></p>
+                  <p>+216 29 082 917</p>
                 </div>
-              </div>
+              </a>
 
-              <div className="contact-item">
+              <div className="contact-item glass">
                 <div className="contact-icon"><FaMapMarkerAlt /></div>
                 <div className="contact-text">
                   <h3>{t('contact.locationLabel')}</h3>
@@ -85,23 +77,20 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            className="contact-form-container"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <Reveal className="contact-form-container glass" x={24} y={0} delay={0.1}>
             <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">{t('contact.name')}</label>
-                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} placeholder={t('contact.namePh')} required />
-              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">{t('contact.name')}</label>
+                  <input type="text" id="name" name="name" autoComplete="name" value={formData.name} onChange={handleChange} placeholder={t('contact.namePh')} required />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="email">{t('contact.emailLabel')}</label>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('contact.emailPh')} required />
+                <div className="form-group">
+                  <label htmlFor="email">{t('contact.emailLabel')}</label>
+                  <input type="email" id="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} placeholder={t('contact.emailPh')} required />
+                </div>
               </div>
 
               <div className="form-group">
@@ -111,20 +100,32 @@ const Contact = () => {
 
               <div className="form-group">
                 <label htmlFor="message">{t('contact.message')}</label>
-                <textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder={t('contact.messagePh')} rows="5" required></textarea>
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder={t('contact.messagePh')} rows="6" required></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary submit-btn">
-                {t('contact.send')}
-              </button>
+              <Magnetic>
+                <button type="submit" className="btn btn-primary submit-btn">
+                  {t('contact.send')} <FaPaperPlane className="btn-icon" />
+                </button>
+              </Magnetic>
 
-              {formStatus.submitted && (
-                <div className={`form-status ${formStatus.success ? 'success' : 'error'}`}>
-                  {formStatus.message}
-                </div>
-              )}
+              <AnimatePresence>
+                {formStatus.submitted && (
+                  <motion.div
+                    className={`form-status ${formStatus.success ? 'success' : 'error'}`}
+                    role="status"
+                    aria-live="polite"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <FaCheckCircle /> {formStatus.message}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </form>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

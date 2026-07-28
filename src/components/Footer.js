@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from 'react-icons/fa';
 import { useLanguage } from '../i18n/LanguageContext';
 import '../styles/Footer.css';
 
@@ -8,16 +8,20 @@ const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <footer className="footer">
       <div className="container footer-container">
         <div className="footer-content">
           <div className="footer-logo">
-            <h2>Aymen<span>Jallouli</span></h2>
-            <p>{t('footer.tagline')}</p>
+            <p className="footer-brand">
+              <span className="footer-prompt">~/</span>aymen-jallouli
+            </p>
+            <p className="footer-tagline">{t('footer.tagline')}</p>
           </div>
 
-          <div className="footer-links">
+          <nav className="footer-links" aria-label="Footer navigation">
             <h3>{t('footer.quickLinks')}</h3>
             <ul>
               <li><Link to="/">{t('nav.home')}</Link></li>
@@ -25,12 +29,12 @@ const Footer = () => {
               <li><Link to="/projects">{t('nav.projects')}</Link></li>
               <li><Link to="/contact">{t('nav.contact')}</Link></li>
             </ul>
-          </div>
+          </nav>
 
           <div className="footer-contact">
             <h3>{t('footer.contactTitle')}</h3>
             <p>{t('footer.contactText')}</p>
-            <div className="social-links">
+            <div className="footer-social">
               <a href="https://github.com/Aymenjallouli" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <FaGithub />
               </a>
@@ -45,7 +49,12 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Aymen Jallouli. {t('footer.rights')}</p>
+          <p className="footer-copy">
+            <span className="footer-prompt">$</span> echo "© {currentYear} Aymen Jallouli — {t('footer.rights')}"
+          </p>
+          <button className="back-to-top" onClick={scrollTop} aria-label="Back to top">
+            <FaArrowUp />
+          </button>
         </div>
       </div>
     </footer>

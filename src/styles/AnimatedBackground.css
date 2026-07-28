@@ -5,9 +5,9 @@
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(1200px 800px at 15% -10%, rgba(124, 92, 255, 0.18), transparent 60%),
-    radial-gradient(1000px 700px at 110% 10%, rgba(34, 211, 238, 0.14), transparent 55%),
-    radial-gradient(900px 900px at 50% 120%, rgba(192, 38, 211, 0.12), transparent 60%),
+    radial-gradient(1200px 800px at 15% -10%, rgba(16, 185, 129, 0.14), transparent 60%),
+    radial-gradient(1000px 700px at 110% 10%, rgba(34, 211, 238, 0.12), transparent 55%),
+    radial-gradient(900px 900px at 50% 120%, rgba(129, 140, 248, 0.1), transparent 60%),
     var(--bg-base);
   transition: background-color 0.5s ease;
 }
@@ -17,9 +17,9 @@
   position: absolute;
   inset: -20%;
   background:
-    radial-gradient(40% 40% at 30% 30%, rgba(124, 92, 255, 0.35), transparent 70%),
-    radial-gradient(35% 35% at 70% 40%, rgba(34, 211, 238, 0.28), transparent 70%),
-    radial-gradient(45% 45% at 50% 75%, rgba(157, 123, 255, 0.22), transparent 70%);
+    radial-gradient(40% 40% at 30% 30%, rgba(16, 185, 129, 0.3), transparent 70%),
+    radial-gradient(35% 35% at 70% 40%, rgba(34, 211, 238, 0.24), transparent 70%),
+    radial-gradient(45% 45% at 50% 75%, rgba(129, 140, 248, 0.18), transparent 70%);
   filter: blur(60px);
   opacity: 0.7;
   animation: meshDrift 24s ease-in-out infinite alternate;
@@ -55,7 +55,7 @@ body.light .aurora-mesh {
   height: 460px;
   top: -120px;
   left: -100px;
-  background: radial-gradient(circle, rgba(124, 92, 255, 0.85), transparent 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.75), transparent 70%);
   animation: float1 18s ease-in-out infinite;
 }
 
@@ -73,7 +73,7 @@ body.light .aurora-mesh {
   height: 420px;
   bottom: -140px;
   left: 35%;
-  background: radial-gradient(circle, rgba(192, 38, 211, 0.6), transparent 70%);
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.5), transparent 70%);
   animation: float3 26s ease-in-out infinite;
 }
 
