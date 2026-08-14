@@ -1,99 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import './styles/App.css';
+import './styles/spidey.css';
 
-// Composants
-import Header from './components/Header';
-import Footer from './components/Footer';
-import AnimatedBackground from './components/AnimatedBackground';
-import CursorGlow from './components/CursorGlow';
-import ScrollToTop from './components/ScrollToTop';
-
-// Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import Contact from './pages/Contact';
-
+import Nav from './components/Nav';
+import Marquee from './components/Marquee';
+import Hero from './sections/Hero';
+import Stats from './sections/Stats';
+import Origin from './sections/Origin';
+import Powers from './sections/Powers';
+import Work from './sections/Work';
+import CallToAction from './sections/CallToAction';
+import Contact from './sections/Contact';
+import SiteFooter from './sections/SiteFooter';
 import { useLanguage } from './i18n/LanguageContext';
 
-/* Reading-progress bar pinned above the header */
-const ScrollProgress = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 });
-  return <motion.div className="scroll-progress" style={{ scaleX }} aria-hidden="true" />;
-};
+/** Appears once you're past the hero; returns you to the top. */
+const BackToTop = ({ label }) => {
+  const [on, setOn] = useState(false);
 
-/* Route content with page transitions (spatial continuity: rise in, lift out) */
-const AnimatedRoutes = () => {
-  const location = useLocation();
+  useEffect(() => {
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      setOn(window.scrollY > window.innerHeight * 0.9);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -12, transition: { duration: 0.22, ease: [0.65, 0, 0.35, 1] } }}
-        transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <button
+      type="button"
+      className={`totop${on ? ' is-on' : ''}`}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label={label}
+      tabIndex={on ? 0 : -1}
+    >
+      ▲
+    </button>
   );
 };
 
 function App() {
-  const [theme, setTheme] = useState('dark');
-  const { lang } = useLanguage();
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.body.className = savedTheme;
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      // L'utilisateur préfère explicitement le thème clair
-      setTheme('light');
-      document.body.className = 'light';
-    } else {
-      // Thème sombre cinématique par défaut
-      setTheme('dark');
-      document.body.className = 'dark';
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.body.className = newTheme;
-    localStorage.setItem('theme', newTheme);
-  };
+  const { t } = useLanguage();
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className={`app ${theme}`}>
-        <a className="skip-link" href="#main-content">
-          {lang === 'fr' ? 'Aller au contenu' : 'Skip to content'}
-        </a>
-        <AnimatedBackground />
-        <CursorGlow />
-        <ScrollProgress />
-        <Header theme={theme} toggleTheme={toggleTheme} />
-        <main className="main-content" id="main-content" tabIndex={-1}>
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <Analytics />
-      </div>
-    </Router>
+    <div className="page">
+      <a className="skip-link" href="#main">
+        {t('a11y.skip')}
+      </a>
+
+      <Nav />
+
+      <main id="main">
+        <Hero />
+        <Stats />
+        <Marquee text={t('marquee1')} variant="red" />
+        <Origin />
+        <Powers />
+        <Work />
+        <Marquee text={t('marquee2')} variant="yellow" />
+        <CallToAction />
+        <Contact />
+      </main>
+
+      <SiteFooter />
+      <BackToTop label={t('a11y.top')} />
+      <Analytics />
+    </div>
   );
 }
 
