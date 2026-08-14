@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
-import { SpiderMark, WebCorner } from '../components/icons';
+import { WebCorner } from '../components/icons';
 import { useCanHover, useReducedMotion } from '../hooks/useMedia';
 
 import spiderCutout from '../assets/spidey/spiderman-cutout.webp';
@@ -9,6 +9,15 @@ import webLines from '../assets/spidey/web-lines.webp';
 import spiderSvg from '../assets/spidey/spider.svg';
 import cvFr from '../assets/Aymen_Jallouli_CV_FR.pdf';
 import cvEn from '../assets/Aymen_Jallouli_CV_EN.pdf';
+
+/* Two stacked lines with the surname stepped in, comic-cover style. Shared by
+   the real heading and both glitch layers so all three stay pixel-identical. */
+const NAME = (
+  <>
+    <span className="hero__l1">AYMEN</span>
+    <span className="hero__l2">JALLOULI</span>
+  </>
+);
 
 /** Types a role, holds, deletes it, then moves to the next one. */
 function useTypewriter(words, enabled) {
@@ -62,7 +71,8 @@ const Hero = () => {
   const titleRef = useRef(null);
 
   const cvHref = lang === 'fr' ? cvFr : cvEn;
-  const caption = open ? t('hero.unmaskCap') : canHover ? t('hero.maskCap') : t('hero.maskCapTouch');
+  const closedCaption = canHover ? t('hero.maskCap') : t('hero.maskCapTouch');
+  const caption = open ? t('hero.unmaskCap') : closedCaption;
 
   return (
     <section id="home" className="hero">
@@ -79,31 +89,21 @@ const Hero = () => {
       </div>
       <div className="thread thread--swing" aria-hidden="true">
         <div className="thread__line" />
-        <div className="thread__icon">
-          <SpiderMark size={34} />
-        </div>
+        <img className="thread__spider" src={spiderSvg} alt="" />
       </div>
 
       <div className="hero__grid">
-        <div>
+        <div className="hero__copy">
           <div className="tag hero__meanwhile">{t('hero.meanwhile')}</div>
           <div className="hero__friendly">{t('hero.friendly')}</div>
 
           <div className="hero__title-wrap" ref={titleRef}>
-            <h1 className="hero__title">
-              AYMEN
-              <br />
-              JALLOULI
-            </h1>
+            <h1 className="hero__title">{NAME}</h1>
             <h1 className="hero__glitch hero__glitch--a" aria-hidden="true">
-              AYMEN
-              <br />
-              JALLOULI
+              {NAME}
             </h1>
             <h1 className="hero__glitch hero__glitch--b" aria-hidden="true">
-              AYMEN
-              <br />
-              JALLOULI
+              {NAME}
             </h1>
           </div>
 
@@ -175,9 +175,18 @@ const Hero = () => {
               <img className="mask__img mask__img--hero" src={spiderCutout} alt="Spider-Man" />
               <img className="mask__img mask__img--face" src={profileCut} alt="Aymen Jallouli" />
               <img className="mask__spider" src={spiderSvg} alt="" aria-hidden="true" />
+              <span className="grabber" aria-hidden="true">
+                <span className="grabber__inner">
+                  <span className="grabber__thread" />
+                  <img className="grabber__spider" src={spiderSvg} alt="" />
+                </span>
+              </span>
             </span>
             <span className="mask__badge">{t('hero.badge')}</span>
-            <span className="mask__cap">{caption}</span>
+            <span className="mask__cap" aria-hidden="true">
+              <span className="mask__cap-t mask__cap-t--closed">{closedCaption}</span>
+              <span className="mask__cap-t mask__cap-t--open">{t('hero.unmaskCap')}</span>
+            </span>
           </button>
         </div>
       </div>

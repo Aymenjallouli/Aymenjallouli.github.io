@@ -1,18 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
-  <g fill="#EDF1FC">
-    <ellipse cx="60" cy="66" rx="13" ry="20"></ellipse>
-    <ellipse cx="60" cy="43" rx="9" ry="8"></ellipse>
-    <path d="M57 35 L52 24 L55 23 L59 34 Z"></path>
-    <path d="M63 35 L68 24 L65 23 L61 34 Z"></path>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <radialGradient id="abd" cx="38%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#5A6490"/>
+      <stop offset="45%" stop-color="#2C3252"/>
+      <stop offset="100%" stop-color="#0E1122"/>
+    </radialGradient>
+    <radialGradient id="pro" cx="40%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#6A749F"/>
+      <stop offset="55%" stop-color="#2A2F4C"/>
+      <stop offset="100%" stop-color="#11142A"/>
+    </radialGradient>
+    <linearGradient id="legG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#AAB5DC"/>
+      <stop offset="100%" stop-color="#5C6690"/>
+    </linearGradient>
+  </defs>
+
+  <!-- legs: dark underlay for depth, mid stroke for the femur, thin taper for
+       the tarsus. Polylines with round joins read as real jointed legs. -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g stroke="#0B0E1C" stroke-width="5.4" opacity=".55">
+      <path d="M67 43 L93 25 L111 32"/>
+      <path d="M68 48 L99 41 L116 53"/>
+      <path d="M68 54 L97 63 L111 79"/>
+      <path d="M66 59 L91 80 L99 101"/>
+      <path d="M53 43 L27 25 L9 32"/>
+      <path d="M52 48 L21 41 L4 53"/>
+      <path d="M52 54 L23 63 L9 79"/>
+      <path d="M54 59 L29 80 L21 101"/>
+    </g>
+    <g stroke="url(#legG)" stroke-width="3.1">
+      <path d="M67 43 L93 25 L111 32"/>
+      <path d="M68 48 L99 41 L116 53"/>
+      <path d="M68 54 L97 63 L111 79"/>
+      <path d="M66 59 L91 80 L99 101"/>
+      <path d="M53 43 L27 25 L9 32"/>
+      <path d="M52 48 L21 41 L4 53"/>
+      <path d="M52 54 L23 63 L9 79"/>
+      <path d="M54 59 L29 80 L21 101"/>
+    </g>
+    <!-- tarsus taper -->
+    <g stroke="#8E9AC6" stroke-width="1.6">
+      <path d="M93 25 L111 32"/>
+      <path d="M99 41 L116 53"/>
+      <path d="M97 63 L111 79"/>
+      <path d="M91 80 L99 101"/>
+      <path d="M27 25 L9 32"/>
+      <path d="M21 41 L4 53"/>
+      <path d="M23 63 L9 79"/>
+      <path d="M29 80 L21 101"/>
+    </g>
+    <!-- knee highlights -->
+    <g stroke="#C6D0F2" stroke-width="2.2" opacity=".5">
+      <path d="M90 27 L95 24"/>
+      <path d="M96 42 L101 41"/>
+      <path d="M95 62 L99 65"/>
+      <path d="M89 78 L92 82"/>
+      <path d="M30 27 L25 24"/>
+      <path d="M24 42 L19 41"/>
+      <path d="M25 62 L21 65"/>
+      <path d="M31 78 L28 82"/>
+    </g>
   </g>
-  <g stroke="#EDF1FC" stroke-width="5" stroke-linecap="round" fill="none">
-    <path d="M48 52 L28 38 L12 44"></path>
-    <path d="M47 62 L22 58 L6 68"></path>
-    <path d="M48 72 L24 80 L12 96"></path>
-    <path d="M52 80 L38 96 L40 112"></path>
-    <path d="M72 52 L92 38 L108 44"></path>
-    <path d="M73 62 L98 58 L114 68"></path>
-    <path d="M72 72 L96 80 L108 96"></path>
-    <path d="M68 80 L82 96 L80 112"></path>
+
+  <!-- pedipalps -->
+  <g stroke="#7C87B4" stroke-width="3.4" stroke-linecap="round">
+    <path d="M56 38 L50 30"/>
+    <path d="M64 38 L70 30"/>
+  </g>
+
+  <!-- abdomen -->
+  <ellipse cx="60" cy="76" rx="15.5" ry="19.5" fill="url(#abd)"/>
+  <path d="M60 60 q7 9 6.5 18 Q64 88 60 94 Q56 88 53.5 78 Q53 69 60 60 Z" fill="#0A0D1B" opacity=".45"/>
+  <ellipse cx="54.5" cy="68" rx="4.2" ry="6.4" fill="#8B95C4" opacity=".28"/>
+
+  <!-- cephalothorax -->
+  <ellipse cx="60" cy="47" rx="11" ry="12.5" fill="url(#pro)"/>
+  <ellipse cx="56" cy="42" rx="3.4" ry="4.4" fill="#9AA4D0" opacity=".32"/>
+
+  <!-- eyes -->
+  <g fill="#DCE3FA">
+    <circle cx="56.2" cy="37.6" r="1.5"/>
+    <circle cx="63.8" cy="37.6" r="1.5"/>
+    <circle cx="59.999" cy="35.6" r="1.15"/>
+    <circle cx="52.9" cy="39.6" r="1.05"/>
+    <circle cx="67.1" cy="39.6" r="1.05"/>
   </g>
 </svg>

@@ -503,7 +503,7 @@ img { max-width: 100%; }
 .thread--drop img { display: block; width: 28px; margin: 0 auto; opacity: 0.75; animation: legTwitch 1.4s ease-in-out infinite; }
 .thread--swing { right: 9%; transform-origin: 50% 0; animation: swingy 5.5s ease-in-out infinite; }
 .thread--swing .thread__line { height: 148px; background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.2)); }
-.thread--swing .thread__icon { color: var(--text); filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.55)); display: flex; justify-content: center; }
+.thread--swing .thread__spider { display: block; width: 42px; margin: 0 auto; filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.6)); animation: legTwitch 1.7s ease-in-out infinite; }
 
 .hero__grid {
   position: relative;
@@ -516,6 +516,17 @@ img { max-width: 100%; }
 }
 @media (max-width: 940px) {
   .hero__grid { grid-template-columns: 1fr; gap: 34px; }
+
+  /* Stacked layout centres the whole intro. The stepped surname only makes
+     sense against a flush-left edge, so it drops back to centre here. */
+  .hero__copy { text-align: center; }
+  .hero__l2 { margin-left: 0; }
+  .hero__desc { margin-left: auto; margin-right: auto; }
+  .hero__ctas, .hero__socials { justify-content: center; }
+  /* bullets stay left-aligned inside a centred column — centred body text with
+     leading glyphs is hard to scan */
+  .hero__ach { align-items: center; }
+  .hero__ach li { text-align: left; max-width: 36ch; }
 }
 
 .hero__meanwhile { transform: rotate(-2deg); box-shadow: var(--sh-2); font-size: clamp(13px, 1.7vw, 16.5px); }
@@ -554,6 +565,15 @@ img { max-width: 100%; }
   pointer-events: none;
   text-shadow: none;
 }
+.hero__l1, .hero__l2 { display: block; }
+/* Comic-cover stagger: the surname pushes to the right edge of the text column.
+   Right-aligning instead of indenting means it takes whatever room the column
+   has and can never overflow — a fixed em indent breaks around 1024-1200px,
+   where the headline is already at its max size but the column is still narrow. */
+@media (min-width: 941px) {
+  .hero__l2 { text-align: right; }
+}
+
 .hero__glitch--a { color: var(--cyan); animation: glitchA 3.8s infinite; }
 .hero__glitch--b { color: var(--pink); animation: glitchB 3.8s infinite 0.25s; }
 
@@ -646,7 +666,15 @@ img { max-width: 100%; }
   cursor: pointer;
   display: block;
 }
-.mask__stage { position: absolute; inset: 0; overflow: hidden; }
+/* The bottom fade lives on the stage so each layer keeps its own reveal mask
+   free — compositing two masks per image is not portable across browsers. */
+.mask__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 66%, rgba(0, 0, 0, 0.55) 86%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 66%, rgba(0, 0, 0, 0.55) 86%, transparent 99%);
+}
 .mask__glow {
   position: absolute;
   left: 50%; top: 46%;
@@ -659,6 +687,10 @@ img { max-width: 100%; }
   );
   animation: glowPulse 5s ease-in-out infinite;
 }
+/* The reveal: a spider abseils in from the top, grabs the suit, heaves once,
+   then hauls it up out of frame — leaving the face underneath. Closing plays
+   the same choreography in reverse, so the spider carries the suit back down.
+   The suit sits above the face so it genuinely covers it while it is there. */
 .mask__img {
   position: absolute;
   inset: 0;
@@ -666,15 +698,91 @@ img { max-width: 100%; }
   object-fit: contain;
   object-position: center bottom;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 66%, rgba(0, 0, 0, 0.55) 86%, transparent 99%);
-  mask-image: linear-gradient(to bottom, #000 66%, rgba(0, 0, 0, 0.55) 86%, transparent 99%);
-  transition: opacity 0.55s ease, filter 0.55s ease, transform 0.6s ease;
 }
-.mask__img--hero { opacity: 1; filter: none; transform: scale(1); }
-.mask__img--face { opacity: 0; filter: blur(16px); transform: scale(1.06); }
-.mask.is-open .mask__img--hero { opacity: 0.12; filter: blur(10px) saturate(0.5) brightness(0.8); transform: scale(1.05); }
-/* lands sharp — a residual blur here reads as a bad photo, not as an effect */
-.mask.is-open .mask__img--face { opacity: 1; filter: saturate(1.05) contrast(1.04); transform: scale(1); }
+/* Staged transitions rather than keyframes: a transition reverses natively and
+   can be interrupted halfway, so the gag replays correctly every single time.
+   (Flipping animation-direction on the same animation-name does NOT restart it,
+   which is why an @keyframes version only ever plays once.)
+   The spider needs to travel down and then back up, which is two directions on
+   one property — so .grabber owns the haul-out and .grabber__inner owns the
+   drop-in, and the two compose. */
+.mask__img--face {
+  z-index: 1;
+  opacity: 0;
+  filter: saturate(1.05) contrast(1.04);
+  transition: opacity 0.28s ease 0s;
+}
+.mask__img--hero {
+  z-index: 2;
+  transform: none;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+.mask.is-open .mask__img--face { opacity: 1; transition-delay: 0.44s; }
+.mask.is-open .mask__img--hero {
+  transform: translateY(-128%) rotate(-7deg);
+  transition-duration: 0.62s;
+  transition-delay: 0.36s;
+}
+
+.grabber {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 3;
+  width: 56px;
+  /* The cutout is width-limited by object-fit:contain and pinned bottom, which
+     puts the crown of the head at ~21% of this box at every size — so the
+     spider lands on the top of the head, not on the face. */
+  height: 25%;
+  margin-left: -28px;
+  pointer-events: none;
+  /* The spider only performs on the way OUT. Closing resets both layers in the
+     same frame, well after the suit is back — their translations cancel, so it
+     never reappears to put the mask on. */
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0s linear 0.6s, transform 0s linear 0.6s;
+}
+.grabber__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-125%);
+  transition: transform 0s linear 0.6s;
+}
+.mask.is-open .grabber {
+  opacity: 1;
+  transform: translateY(-150%);
+  transition: opacity 0s linear 0s, transform 0.62s cubic-bezier(0.4, 0, 0.2, 1) 0.34s;
+}
+.mask.is-open .grabber__inner {
+  transform: translateY(0);
+  transition: transform 0.34s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+/* the thread runs off the top of the stage, which clips it — so it always
+   reads as coming from somewhere above rather than starting mid-air */
+.grabber__thread {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.85));
+}
+.grabber__spider {
+  display: block;
+  width: clamp(30px, 5vw, 44px);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+  animation: legTwitch 0.9s ease-in-out infinite;
+}
+
+/* No stunt work if the visitor asked for less motion — just show the face. */
+@media (prefers-reduced-motion: reduce) {
+  .grabber { display: none; }
+  .mask__img--hero { transform: none !important; }
+  .mask__img--face { opacity: 0; transition: opacity 0.2s linear; }
+  .mask.is-open .mask__img--face { opacity: 1; }
+  .mask.is-open .mask__img--hero { opacity: 0; }
+}
 
 .mask__spider {
   position: absolute;
@@ -711,14 +819,25 @@ img { max-width: 100%; }
   font-family: var(--f-comic);
   font-size: clamp(13px, 1.8vw, 17px);
   letter-spacing: 1.5px;
+  overflow: hidden;
+  transition: background 0.45s ease, color 0.45s ease;
+  background: var(--yellow);
+  color: var(--ink);
+  /* both captions share one grid cell so the bar is sized by the longer of the
+     two and never snaps width mid-reveal */
+  display: grid;
+}
+.mask__cap-t {
+  grid-area: 1 / 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: background 0.3s, color 0.3s;
-  background: var(--yellow);
-  color: var(--ink);
+  transition: opacity 0.34s ease;
 }
+.mask__cap-t--open { opacity: 0; }
 .mask.is-open .mask__cap { background: var(--red); color: #fff; }
+.mask.is-open .mask__cap-t--closed { opacity: 0; }
+.mask.is-open .mask__cap-t--open { opacity: 1; }
 
 /* On narrow screens POW! would land on the caption bar — move it up top so
    the two badges frame the portrait instead of colliding with the copy. */
@@ -1013,6 +1132,8 @@ img { max-width: 100%; }
 .mini--live { background: var(--red); color: #fff; }
 .mini--live:hover { color: #fff; }
 .mini--priv { background: #d8d2c4; color: #5a5f73; border-color: #9b9688; box-shadow: none; }
+
+.more { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 42px); }
 
 .empty { text-align: center; margin-top: 46px; }
 .empty span {

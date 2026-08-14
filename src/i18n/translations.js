@@ -17,11 +17,11 @@ export const translations = {
       friendly: 'VOTRE SYMPATHIQUE DÉVELOPPEUR DE QUARTIER',
       status: 'Disponible pour des opportunités & projets freelance',
       desc:
-        "J'architecture et je livre des plateformes web qui tiennent la charge : microservices React, Node.js et Django, API sécurisées, déploiement cloud-native sur AWS. Du premier commit à la production, sans casse.",
+        "Je conçois et je livre des applications web complètes : interfaces React soignées, back-ends Node.js, Django et Spring Boot, API sécurisées et déploiement cloud sur AWS. Du premier commit à la production.",
       ach: [
-        '12 microservices en production sur AWS, conteneurisés et monitorés',
-        '15+ API REST sécurisées, du design au déploiement',
-        '10+ produits livrés en freelance, de la maquette à la mise en ligne',
+        'Applications web full-stack, du frontend à la base de données',
+        'Interfaces modernes, rapides et responsives',
+        'Cloud & DevOps : AWS, Docker, CI/CD',
       ],
       cta1: 'VOIR MES MISSIONS',
       cta2: 'TÉLÉCHARGER LE CV',
@@ -46,7 +46,7 @@ export const translations = {
       sagaTitle: "LA SAGA JUSQU'ICI",
       bio: [
         "Je suis Aymen Jallouli, développeur Full Stack et ingénieur logiciel. Je construis des applications web rapides, robustes et prêtes pour la production — du frontend React aux backends Node.js, Express, Django et Spring Boot.",
-        "Mon terrain de jeu : architectures microservices, API REST sécurisées, conteneurisation Docker, pipelines CI/CD et cloud AWS. Je ne livre pas une démo — je livre un produit qui tient debout en production.",
+        "Mon terrain de jeu : interfaces React soignées, back-ends Node.js et Django, API sécurisées, conteneurisation Docker, pipelines CI/CD et cloud AWS. Je ne livre pas une démo — je livre un produit qui tient debout en production.",
         "En freelance, j'ai mené plus de 10 projets pour des clients internationaux — sites vitrines haute performance et applications full-stack complètes — en pilotant chaque étape, du cadrage à la mise en ligne.",
       ],
       timeline: [
@@ -54,7 +54,7 @@ export const translations = {
           role: 'Développeur Full Stack — AI Bonding (Allemagne)',
           period: 'Sept. 2025 – Présent',
           text:
-            '12 microservices React + Django/Python en production, 15+ API REST sécurisées et une chaîne de déploiement AWS sur trois environnements — dev, staging, prod.',
+            "Développement full-stack d'une plateforme web (React + Django/Python) : interfaces, API sécurisées et déploiement cloud sur AWS.",
         },
         {
           role: 'Développeur Full Stack & Frontend — Freelance',
@@ -96,6 +96,8 @@ export const translations = {
       filterLabel: 'Filtrer les projets par catégorie',
       code: 'CODE',
       live: 'LIVE',
+      more: 'VOIR PLUS',
+      less: 'VOIR MOINS',
     },
     cta: {
       title: 'UN GRAND CODE IMPLIQUE DE GRANDES RESPONSABILITÉS.',
@@ -147,11 +149,11 @@ export const translations = {
       friendly: 'YOUR FRIENDLY NEIGHBORHOOD DEVELOPER',
       status: 'Available for opportunities & freelance projects',
       desc:
-        'I architect and ship web platforms that hold up under load: React, Node.js and Django microservices, secure APIs, cloud-native deployment on AWS. First commit to production, nothing broken on the way.',
+        'I design and ship complete web applications: polished React interfaces, Node.js, Django and Spring Boot back-ends, secure APIs and cloud deployment on AWS. From first commit to production.',
       ach: [
-        '12 microservices running in production on AWS, containerised and monitored',
-        '15+ secure REST APIs, from design through deployment',
-        '10+ freelance products delivered, from mockup to launch',
+        'Full-stack web applications, from frontend to database',
+        'Modern interfaces — fast, responsive, built to last',
+        'Cloud & DevOps: AWS, Docker, CI/CD',
       ],
       cta1: 'SEE MY MISSIONS',
       cta2: 'DOWNLOAD CV',
@@ -176,7 +178,7 @@ export const translations = {
       sagaTitle: 'THE SAGA SO FAR',
       bio: [
         "I'm Aymen Jallouli, a Full Stack Developer and Software Engineer. I build fast, resilient, production-ready web applications — from React frontends to Node.js, Express, Django and Spring Boot backends.",
-        'My territory: microservices architectures, secure REST APIs, Docker containerisation, CI/CD pipelines and AWS. I don\'t ship demos — I ship products that stay standing in production.',
+        "My territory: polished React interfaces, Node.js and Django back-ends, secure APIs, Docker containerisation, CI/CD pipelines and AWS. I don't ship demos — I ship products that stay standing in production.",
         "As a freelancer I've led 10+ projects for international clients — high-performance showcase sites and complete full-stack applications — owning every step from scoping to launch.",
       ],
       timeline: [
@@ -184,7 +186,7 @@ export const translations = {
           role: 'Full Stack Developer — AI Bonding (Germany)',
           period: 'Sep 2025 – Present',
           text:
-            '12 React + Django/Python microservices in production, 15+ secure REST APIs and an AWS deployment chain across three environments — dev, staging, prod.',
+            'Full-stack development of a web platform (React + Django/Python): interfaces, secure APIs and cloud deployment on AWS.',
         },
         {
           role: 'Full Stack & Frontend Developer — Freelance',
@@ -225,6 +227,8 @@ export const translations = {
       filterLabel: 'Filter projects by category',
       code: 'CODE',
       live: 'LIVE',
+      more: 'SEE MORE',
+      less: 'SHOW LESS',
     },
     cta: {
       title: 'WITH GREAT CODE COMES GREAT RESPONSIBILITY.',

@@ -6,11 +6,23 @@ import Reveal from '../components/Reveal';
 import webLines from '../assets/spidey/web-lines.webp';
 import spiderSvg from '../assets/spidey/spider.svg';
 
+/** Cards shown before the "see more" button kicks in, and the step it adds. */
+const PAGE_SIZE = 4;
+
 const Work = () => {
   const { lang, t } = useLanguage();
   const [filter, setFilter] = useState('Tout');
+  const [limit, setLimit] = useState(PAGE_SIZE);
 
-  const shown = useMemo(() => PROJECTS.filter((p) => filter === 'Tout' || p.cats.includes(filter)), [filter]);
+  const filtered = useMemo(() => PROJECTS.filter((p) => filter === 'Tout' || p.cats.includes(filter)), [filter]);
+  const shown = filtered.slice(0, limit);
+  const remaining = filtered.length - shown.length;
+
+  // switching category always starts a fresh page
+  const pick = (c) => {
+    setFilter(c);
+    setLimit(PAGE_SIZE);
+  };
 
   return (
     <section id="projects" className="projects">
@@ -30,7 +42,7 @@ const Work = () => {
               key={c}
               type="button"
               className={`filter${filter === c ? ' is-on' : ''}`}
-              onClick={() => setFilter(c)}
+              onClick={() => pick(c)}
               aria-pressed={filter === c}
             >
               {CATEGORY_LABELS[lang][c]}
@@ -82,7 +94,21 @@ const Work = () => {
           ))}
         </div>
 
-        {shown.length === 0 && (
+        {filtered.length > PAGE_SIZE && (
+          <div className="more">
+            {remaining > 0 ? (
+              <button type="button" className="btn btn--yellow" onClick={() => setLimit(limit + PAGE_SIZE)}>
+                {t('proj.more')} (+{remaining})
+              </button>
+            ) : (
+              <button type="button" className="btn btn--ghost" onClick={() => setLimit(PAGE_SIZE)}>
+                {t('proj.less')}
+              </button>
+            )}
+          </div>
+        )}
+
+        {filtered.length === 0 && (
           <div className="empty">
             <span>{t('proj.none')}</span>
           </div>
