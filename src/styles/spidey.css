@@ -86,6 +86,9 @@ body {
 }
 
 a { color: var(--yellow); text-decoration: none; }
+/* no grey/blue flash box when tapping on mobile — the elements carry their own
+   :active feedback instead */
+a, button { -webkit-tap-highlight-color: transparent; }
 img { max-width: 100%; }
 ::selection { background: var(--red); color: #fff; }
 
@@ -517,6 +520,10 @@ img { max-width: 100%; }
 @media (max-width: 940px) {
   .hero__grid { grid-template-columns: 1fr; gap: 34px; }
 
+  /* Portrait leads on mobile — Spider-Man is the hook, so he comes before the
+     copy rather than sitting a full screen below it. */
+  .hero__art { order: -1; padding: 6px 10px 26px; }
+
   /* Stacked layout centres the whole intro. The stepped surname only makes
      sense against a flush-left edge, so it drops back to centre here. */
   .hero__copy { text-align: center; }
@@ -665,7 +672,13 @@ img { max-width: 100%; }
   padding: 0;
   cursor: pointer;
   display: block;
+  -webkit-tap-highlight-color: transparent;
 }
+/* No frame around the portrait when it is clicked or tapped. Keyboard focus is
+   still shown — it just moves to the caption chip instead of boxing the photo. */
+.mask:focus,
+.mask:focus-visible { outline: none; }
+.mask:focus-visible .mask__cap { outline: 3px solid var(--cyan); outline-offset: 3px; }
 /* The bottom fade lives on the stage so each layer keeps its own reveal mask
    free — compositing two masks per image is not portable across browsers. */
 .mask__stage {
@@ -1051,6 +1064,7 @@ img { max-width: 100%; }
   transition: transform 0.13s, background 0.13s, color 0.13s;
 }
 .filter:hover { transform: translate(-1px, -2px); }
+.filter:active { transform: scale(0.95); }
 .filter.is-on { background: var(--red); color: #fff; transform: rotate(-2deg) scale(1.07); }
 
 .projects__grid {
