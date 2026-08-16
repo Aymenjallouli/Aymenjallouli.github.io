@@ -4,29 +4,30 @@ import '@/styles/spidey.css';
 
 /**
  * With one root layout per locale, the global 404 sits outside both of them and
- * has to render its own <html>/<body>. Kept dependency-free for that reason.
+ * has to render its own <html>/<body>. Kept dependency-free for that reason,
+ * and in the default locale since it has no route to infer a language from.
  */
 export const metadata = {
-  title: 'Page introuvable — Aymen Jallouli',
+  title: 'Page not found — Aymen Jallouli',
   robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
   return (
-    <html lang="fr">
+    <html lang="en">
       <body>
         <main className="notfound">
           <p className="notfound__code">404</p>
-          <h1 className="notfound__title">CETTE PAGE A DISPARU DANS LE MULTIVERS.</h1>
+          <h1 className="notfound__title">THIS PAGE SLIPPED THROUGH THE WEB.</h1>
           <p className="notfound__text">
-            This page slipped through the web. Le lien est peut-être périmé ou mal recopié.
+            The link is either out of date or lost a character on the way here.
           </p>
           <div className="notfound__links">
             <Link className="btn btn--red" href="/">
-              RETOUR À L’ACCUEIL
+              BACK TO HOME
             </Link>
-            <Link className="btn btn--yellow" href="/projets">
-              VOIR LES PROJETS
+            <Link className="btn btn--yellow" href="/projects">
+              SEE THE PROJECTS
             </Link>
           </div>
         </main>
