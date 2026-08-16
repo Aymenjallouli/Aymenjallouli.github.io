@@ -7,6 +7,8 @@
 /coverage
 
 # Production
+/.next
+/out
 /build
 
 # Misc
@@ -46,3 +48,10 @@ yarn-error.log*
 
 # Playwright MCP scratch output
 .playwright-mcp
+
+/.next
+/out
+
+# Personal documents — contain CIN, address, phone and a signature.
+# Never commit these to a public remote; git history cannot be un-published.
+/formulaire_nom_de_domaine_*.pdf
