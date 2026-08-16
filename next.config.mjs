@@ -13,10 +13,9 @@ const nextConfig = {
     ];
   },
 
-  // The old CRA one-pager lived at "/" with in-page anchors only, so there are
-  // no legacy deep links to preserve — but the French copy used to be the only
-  // thing served, and /fr is the URL people will guess. Send it to the canonical
-  // root rather than serving the same page twice.
+  // English is the default locale and lives at "/", so /en is not a route —
+  // but it is the URL people guess and the one the earlier build used. Fold it
+  // into the root instead of leaving a 404 behind.
   //
   // The www rule matters more than it looks: Vercel serves both hostnames by
   // default, so without it every page exists at two URLs. The canonical tags
@@ -24,8 +23,9 @@ const nextConfig = {
   // aymenjallouli.dev the only host that ever appears in results.
   async redirects() {
     return [
-      { source: '/fr', destination: '/', permanent: true },
-      { source: '/fr/:path*', destination: '/:path*', permanent: true },
+      { source: '/en', destination: '/', permanent: true },
+      { source: '/en/projects', destination: '/projects', permanent: true },
+      { source: '/en/projects/:slug', destination: '/projects/:slug', permanent: true },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.aymenjallouli.dev' }],

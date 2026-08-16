@@ -1,9 +1,9 @@
 import { PROJECTS } from '@/lib/projects';
 import { pagePaths } from '@/lib/seo';
-import { absoluteUrl } from '@/lib/site';
+import { absoluteUrl, LOCALES, DEFAULT_LOCALE } from '@/lib/site';
 
 /**
- * Every URL, both locales, with the FR/EN pair declared as alternates.
+ * Every URL, both locales, with the EN/FR pair declared as alternates.
  *
  * Google reads the sitemap's hreflang independently of the ones in <head>, and
  * having both agree is what stops the two language versions being read as
@@ -11,13 +11,15 @@ import { absoluteUrl } from '@/lib/site';
  */
 export default function sitemap() {
   const entry = (paths, priority, changeFrequency) =>
-    ['fr', 'en'].map((lang) => ({
+    LOCALES.map((lang) => ({
       url: absoluteUrl(paths[lang]),
       lastModified: new Date(),
       changeFrequency,
-      priority: lang === 'fr' ? priority : priority - 0.05,
+      // The default locale edges out the translation; both stay well above the
+      // 0.5 midpoint so neither reads as an afterthought.
+      priority: lang === DEFAULT_LOCALE ? priority : priority - 0.05,
       alternates: {
-        languages: { fr: absoluteUrl(paths.fr), en: absoluteUrl(paths.en) },
+        languages: Object.fromEntries(LOCALES.map((l) => [l, absoluteUrl(paths[l])])),
       },
     }));
 
