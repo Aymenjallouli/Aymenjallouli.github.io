@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "create-react-app",
-  "buildCommand": "CI=false react-scripts build",
-  "outputDirectory": "build",
-  "cleanUrls": true
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "outputDirectory": ".next"
 }
