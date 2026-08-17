@@ -1,5 +1,6 @@
 import { Anton, Archivo, Bangers } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import '@/styles/spidey.css';
 import { LanguageProvider } from '@/lib/LanguageContext';
@@ -37,7 +38,13 @@ export default function Shell({ lang, children }) {
         </noscript>
 
         <LanguageProvider lang={lang}>{children}</LanguageProvider>
+
+        {/* Both use the /next entry rather than /react so route changes are
+            attributed to the URL they land on. The /react build reads the
+            path once at mount, which would file every navigation between
+            /, /projects and the project pages under the entry URL. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
