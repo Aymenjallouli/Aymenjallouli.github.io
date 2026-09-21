@@ -71,6 +71,16 @@ export default function ProjectPage({ slug }) {
             <span className="dots" aria-hidden="true" />
           </div>
 
+          {project.shots && (
+            <div className="proj-shots">
+              {project.shots.map((src) => (
+                <div key={src} className="panel proj-shot">
+                  <img src={src} alt={project.t} loading="lazy" decoding="async" width="1200" height="565" />
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="proj-meta">
             <div className="panel proj-meta__box">
               <h2>{t('pages.stack')}</h2>

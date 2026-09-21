@@ -1484,6 +1484,14 @@ a.crow:hover { transform: translate(-3px, -4px); color: var(--ink); }
   object-fit: cover;
 }
 
+/* extra screenshots, for projects that carry `shots` */
+.proj-shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(16px, 2.4vw, 26px);
+  margin-top: clamp(16px, 2.4vw, 26px);
+}
+
 /* meta boxes */
 .proj-meta {
   display: grid;
