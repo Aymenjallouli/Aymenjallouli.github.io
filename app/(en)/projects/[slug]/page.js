@@ -4,7 +4,7 @@ import ProjectPage from '@/components/ProjectPage';
 import { PROJECTS, getProject } from '@/lib/projects';
 import { buildMetadata, projectMeta, projectJsonLd, JsonLd, pagePaths } from '@/lib/seo';
 
-/** Prerender all 17 at build time — every one is a static file on the CDN. */
+/** Prerender every project at build time — every one is a static file on the CDN. */
 export const generateStaticParams = () => PROJECTS.map((p) => ({ slug: p.slug }));
 export const dynamicParams = false;
 

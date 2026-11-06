@@ -9,6 +9,8 @@ import { CATEGORY_LABELS } from '@/lib/translations';
 import { PROJECTS } from '@/lib/projects';
 import { pagePaths } from '@/lib/seo';
 import { localePath } from '@/lib/site';
+import { useQuote } from '@/components/QuoteProvider';
+import TT from '@/components/ThemeText';
 
 const webLines = '/assets/spidey/web-lines.webp';
 
@@ -21,6 +23,7 @@ function related(project) {
 
 export default function ProjectPage({ slug }) {
   const { lang, t } = useLanguage();
+  const { open: openQuote } = useQuote();
   const project = PROJECTS.find((p) => p.slug === slug);
   const home = localePath(lang);
   const paths = pagePaths.project(slug);
@@ -35,7 +38,7 @@ export default function ProjectPage({ slug }) {
       <Nav base={home} paths={paths} spy={false} />
 
       <main id="main" className="proj-page">
-        <img className="proj-page__lines" src={webLines} alt="" aria-hidden="true" />
+        <img className="proj-page__lines" src={webLines} alt="" aria-hidden="true" loading="lazy" />
 
         <div className="wrap">
           <nav className="crumbs" aria-label="Breadcrumb">
@@ -55,12 +58,14 @@ export default function ProjectPage({ slug }) {
           <div className="proj-page__actions">
             {project.live && (
               <a className="btn btn--red" href={project.live} target="_blank" rel="noopener noreferrer">
-                ▶ {t('pages.visit')}
+                <span className="th-s">▶ </span>
+                <TT k="pages.visit" />
+                <span className="th-p"> ↗</span>
               </a>
             )}
             {project.gh && (
               <a className="btn btn--yellow" href={project.gh} target="_blank" rel="noopener noreferrer">
-                &lt;/&gt; {t('pages.sourceCode')}
+                &lt;/&gt; <TT k="pages.sourceCode" />
               </a>
             )}
             {project.priv && <span className="mini mini--priv">{t('pages.privateRepo')}</span>}
@@ -83,7 +88,9 @@ export default function ProjectPage({ slug }) {
 
           <div className="proj-meta">
             <div className="panel proj-meta__box">
-              <h2>{t('pages.stack')}</h2>
+              <h2>
+                <TT k="pages.stack" />
+              </h2>
               <div className="power__items">
                 {project.tech.map((tk) => (
                   <span key={tk} className="chip">
@@ -94,7 +101,9 @@ export default function ProjectPage({ slug }) {
             </div>
 
             <div className="panel proj-meta__box">
-              <h2>{t('pages.category')}</h2>
+              <h2>
+                <TT k="pages.category" />
+              </h2>
               <div className="power__items">
                 {project.cats.map((c) => (
                   <span key={c} className="chip">
@@ -104,7 +113,9 @@ export default function ProjectPage({ slug }) {
               </div>
               {project.city && (
                 <>
-                  <h2 className="proj-meta__h2--gap">{t('pages.location')}</h2>
+                  <h2 className="proj-meta__h2--gap">
+                    <TT k="pages.location" />
+                  </h2>
                   <div className="power__items">
                     <span className="chip">{project.city}</span>
                   </div>
@@ -113,7 +124,9 @@ export default function ProjectPage({ slug }) {
             </div>
           </div>
 
-          <h2 className="h-section proj-page__rel-h">{t('pages.related')}</h2>
+          <h2 className="h-section proj-page__rel-h">
+            <TT k="pages.related" />
+          </h2>
           <div className="rel-grid">
             {related(project).map((p) => (
               <Link key={p.slug} href={pagePaths.project(p.slug)[lang]} className="panel rel-card">
@@ -128,11 +141,13 @@ export default function ProjectPage({ slug }) {
 
           <div className="panel proj-cta">
             <span className="dots" aria-hidden="true" />
-            <h2>{t('pages.ctaTitle')}</h2>
+            <h2>
+              <TT k="pages.ctaTitle" />
+            </h2>
             <p>{t('pages.ctaText')}</p>
-            <a className="btn btn--yellow" href={`${home}#contact`}>
-              {t('pages.ctaButton')}
-            </a>
+            <button type="button" className="btn btn--yellow" onClick={() => openQuote()}>
+              <TT k="pages.ctaButton" />
+            </button>
           </div>
         </div>
       </main>

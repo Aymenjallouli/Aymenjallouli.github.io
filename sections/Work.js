@@ -8,6 +8,7 @@ import { CATEGORIES, CATEGORY_LABELS } from '@/lib/translations';
 import { PROJECTS } from '@/lib/projects';
 import { pagePaths } from '@/lib/seo';
 import Reveal from '@/components/Reveal';
+import TT from '@/components/ThemeText';
 
 const webLines = '/assets/spidey/web-lines.webp';
 const spiderSvg = '/assets/spidey/spider.svg';
@@ -33,14 +34,16 @@ const Work = () => {
   return (
     <section id="projects" className="projects">
       <div className="dots projects__dots" />
-      <img className="projects__lines" src={webLines} alt="" aria-hidden="true" />
-      <img className="projects__crawler" src={spiderSvg} alt="" aria-hidden="true" />
+      <img className="projects__lines" src={webLines} alt="" aria-hidden="true" loading="lazy" />
+      <img className="projects__crawler" src={spiderSvg} alt="" aria-hidden="true" loading="lazy" />
 
       <div className="wrap wrap--wide">
         <div className="tag" style={{ transform: 'rotate(-1deg)' }}>
-          {t('proj.issue')}
+          <TT k="proj.issue" />
         </div>
-        <h2 className="h-section">{t('proj.title')}</h2>
+        <h2 className="h-section">
+          <TT k="proj.title" />
+        </h2>
 
         <div className="filters" role="group" aria-label={t('proj.filterLabel')}>
           {CATEGORIES.map((c) => (
@@ -65,8 +68,16 @@ const Work = () => {
                   <span className="dots" aria-hidden="true" />
                 </div>
 
-                {p.feat && <div className="card__flag card__flag--feat">★ {t('proj.featured')}</div>}
-                {p.priv && <div className="card__flag card__flag--priv">{t('proj.private')}</div>}
+                {p.feat && (
+                  <div className="card__flag card__flag--feat">
+                    ★ <TT k="proj.featured" />
+                  </div>
+                )}
+                {p.priv && (
+                  <div className="card__flag card__flag--priv">
+                    <TT k="proj.private" />
+                  </div>
+                )}
 
                 <div className="card__body">
                   <div className="card__cats">{p.cats.map((c) => CATEGORY_LABELS[lang][c]).join(' • ')}</div>
@@ -88,12 +99,14 @@ const Work = () => {
                   <div className="card__links">
                     {p.gh && (
                       <a className="mini mini--code" href={p.gh} target="_blank" rel="noopener noreferrer">
-                        &lt;/&gt; {t('proj.code')}
+                        &lt;/&gt; <TT k="proj.code" />
                       </a>
                     )}
                     {p.live && (
                       <a className="mini mini--live" href={p.live} target="_blank" rel="noopener noreferrer">
-                        ▶ {t('proj.live')}
+                        <span className="th-s">▶ </span>
+                        <TT k="proj.live" />
+                        <span className="th-p"> ↗</span>
                       </a>
                     )}
                     {p.priv && <span className="mini mini--priv">{t('proj.privateTitle')}</span>}
@@ -108,18 +121,18 @@ const Work = () => {
           {filtered.length > PAGE_SIZE &&
             (remaining > 0 ? (
               <button type="button" className="btn btn--yellow" onClick={() => setLimit(limit + PAGE_SIZE)}>
-                {t('proj.more')} (+{remaining})
+                <TT k="proj.more" /> (+{remaining})
               </button>
             ) : (
               <button type="button" className="btn btn--ghost" onClick={() => setLimit(PAGE_SIZE)}>
-                {t('proj.less')}
+                <TT k="proj.less" />
               </button>
             ))}
 
           {/* Paging is client state, so the cards past the first page never
               reach the HTML. This link is how a crawler gets to the rest. */}
           <Link href={pagePaths.projects[lang]} className="btn btn--ghost">
-            {t('proj.all')}
+            <TT k="proj.all" />
           </Link>
         </div>
 

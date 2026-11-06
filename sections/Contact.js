@@ -2,7 +2,9 @@
 
 import { useRef, useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { MailIcon, PhoneIcon, PinIcon } from '@/components/icons';
+import { MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from '@/components/icons';
+import TT from '@/components/ThemeText';
+import { whatsappUrl } from '@/lib/pricing';
 
 const EMAIL = 'aymen.jallouli@esprit.tn';
 const PHONE = '+216 29 082 917';
@@ -28,13 +30,17 @@ const Contact = () => {
     <section id="contact" className="contact">
       <div className="wrap">
         <div className="tag" style={{ transform: 'rotate(-1.5deg)' }}>
-          {t('contact.issue')}
+          <TT k="contact.issue" />
         </div>
-        <h2 className="h-section">{t('contact.title')}</h2>
+        <h2 className="h-section">
+          <TT k="contact.title" />
+        </h2>
 
         <div className="two-col">
           <div>
-            <h3 className="contact__h3">{t('contact.infoTitle')}</h3>
+            <h3 className="contact__h3">
+              <TT k="contact.infoTitle" />
+            </h3>
             <p className="contact__intro">{t('contact.intro')}</p>
 
             <div className="contact__list">
@@ -45,6 +51,16 @@ const Contact = () => {
                 <span>
                   <span className="crow__k">{t('contact.emailLabel')}</span>
                   <span className="crow__v">{EMAIL}</span>
+                </span>
+              </a>
+
+              <a className="crow" href={whatsappUrl(t('quote.msgHello'))} target="_blank" rel="noopener noreferrer">
+                <span className="crow__icon crow__icon--green">
+                  <WhatsAppIcon />
+                </span>
+                <span>
+                  <span className="crow__k">{t('contact.whatsappLabel')}</span>
+                  <span className="crow__v">{PHONE}</span>
                 </span>
               </a>
 
@@ -70,7 +86,9 @@ const Contact = () => {
             </div>
 
             <div className="contact__follow">
-              <span>{t('contact.follow')}</span>
+              <span>
+                <TT k="contact.follow" />
+              </span>
               <div>
                 <a className="pill" href="https://github.com/Aymenjallouli" target="_blank" rel="noopener noreferrer">
                   GITHUB
@@ -112,7 +130,7 @@ const Contact = () => {
             </label>
 
             <button type="submit" className="btn btn--red form__send">
-              {t('contact.send')}
+              <TT k="contact.send" />
             </button>
 
             {sent && (

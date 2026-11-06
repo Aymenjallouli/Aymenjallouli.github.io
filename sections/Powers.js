@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/LanguageContext';
 import Reveal from '@/components/Reveal';
+import TT from '@/components/ThemeText';
 
 const Powers = () => {
   const { t } = useLanguage();
@@ -10,9 +11,11 @@ const Powers = () => {
     <section id="powers" className="powers">
       <div className="wrap">
         <div className="tag" style={{ transform: 'rotate(1deg)' }}>
-          {t('skills.issue')}
+          <TT k="skills.issue" />
         </div>
-        <h2 className="h-section">{t('skills.title')}</h2>
+        <h2 className="h-section">
+          <TT k="skills.title" />
+        </h2>
 
         <div className="powers__grid">
           {t('skills.groups').map((g, i) => (

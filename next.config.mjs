@@ -1,3 +1,17 @@
+/**
+ * Projects taken off the site. Their detail pages were indexed, so each URL
+ * 301s to the projects index (in its own locale) instead of turning into a 404
+ * and throwing away whatever ranking it had.
+ */
+const RETIRED_SLUGS = [
+  'systeme-gestion-restaurant-microservices',
+  'pipeline-devops-jenkins-docker',
+  'wided-fit-gabes',
+  'fit4you-gabes',
+  'oconnors-irish-pub-sousse',
+  'the-zoo-bar-tunis',
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -23,6 +37,11 @@ const nextConfig = {
   // aymenjallouli.dev the only host that ever appears in results.
   async redirects() {
     return [
+      ...RETIRED_SLUGS.flatMap((slug) => [
+        { source: `/projects/${slug}`, destination: '/projects', permanent: true },
+        { source: `/en/projects/${slug}`, destination: '/projects', permanent: true },
+        { source: `/fr/projets/${slug}`, destination: '/fr/projets', permanent: true },
+      ]),
       { source: '/en', destination: '/', permanent: true },
       { source: '/en/projects', destination: '/projects', permanent: true },
       { source: '/en/projects/:slug', destination: '/projects/:slug', permanent: true },

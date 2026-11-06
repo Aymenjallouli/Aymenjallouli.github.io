@@ -431,7 +431,7 @@ img { max-width: 100%; }
 .drawer a:hover, .drawer a.is-active { color: var(--yellow); }
 .drawer__foot { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
 
-@media (max-width: 980px) {
+@media (max-width: 1120px) {
   .nav__links { display: none; }
   .burger { display: flex; }
 }
@@ -1357,7 +1357,8 @@ a.crow:hover { transform: translate(-3px, -4px); color: var(--ink); }
 .totop {
   position: fixed;
   right: clamp(14px, 3vw, 26px);
-  bottom: clamp(14px, 3vw, 26px);
+  /* sits above the guide launcher, which owns the bottom-right corner */
+  bottom: calc(clamp(14px, 3vw, 26px) + 76px);
   z-index: 50;
   width: 50px; height: 50px;
   display: flex;

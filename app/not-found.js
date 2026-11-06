@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
 import '@/styles/spidey.css';
+import '@/styles/pro.css';
+import { DEFAULT_THEME, THEME_SCRIPT } from '@/lib/theme';
 
 /**
  * With one root layout per locale, the global 404 sits outside both of them and
@@ -14,7 +16,10 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <html lang="en">
+    <html lang="en" data-theme={DEFAULT_THEME} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <main className="notfound">
           <p className="notfound__code">404</p>

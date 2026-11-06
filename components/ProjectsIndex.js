@@ -10,6 +10,8 @@ import { CATEGORY_LABELS } from '@/lib/translations';
 import { PROJECTS } from '@/lib/projects';
 import { pagePaths } from '@/lib/seo';
 import { localePath } from '@/lib/site';
+import { useQuote } from '@/components/QuoteProvider';
+import TT from '@/components/ThemeText';
 
 const webLines = '/assets/spidey/web-lines.webp';
 
@@ -17,12 +19,13 @@ const webLines = '/assets/spidey/web-lines.webp';
  * Every project, unpaginated and server-rendered.
  *
  * The home page shows four cards behind a "see more" button, which means the
- * other thirteen only exist after a click — invisible to a crawler. This page
+ * rest only exist after a click — invisible to a crawler. This page
  * is the flat, fully-rendered index that makes all of them reachable, and the
  * hub that links out to each detail page.
  */
 export default function ProjectsIndex() {
   const { lang, t } = useLanguage();
+  const { open: openQuote } = useQuote();
   const home = localePath(lang);
   const cat = (c) => CATEGORY_LABELS[lang][c] || c;
 
@@ -35,7 +38,7 @@ export default function ProjectsIndex() {
       <Nav base={home} paths={pagePaths.projects} spy={false} />
 
       <main id="main" className="proj-page">
-        <img className="proj-page__lines" src={webLines} alt="" aria-hidden="true" />
+        <img className="proj-page__lines" src={webLines} alt="" aria-hidden="true" loading="lazy" />
 
         <div className="wrap wrap--wide">
           <nav className="crumbs" aria-label="Breadcrumb">
@@ -47,7 +50,9 @@ export default function ProjectsIndex() {
           <div className="tag" style={{ transform: 'rotate(-1deg)' }}>
             {t('pages.projectsCount')(PROJECTS.length)}
           </div>
-          <h1 className="proj-page__title">{t('pages.projectsTitle')}</h1>
+          <h1 className="proj-page__title">
+            <TT k="pages.projectsTitle" />
+          </h1>
           <p className="proj-page__lead">{t('pages.projectsIntro')}</p>
 
           <div className="projects__grid projects__grid--index">
@@ -59,8 +64,16 @@ export default function ProjectsIndex() {
                     <span className="dots" aria-hidden="true" />
                   </div>
 
-                  {p.feat && <div className="card__flag card__flag--feat">★ {t('proj.featured')}</div>}
-                  {p.priv && <div className="card__flag card__flag--priv">{t('proj.private')}</div>}
+                  {p.feat && (
+                    <div className="card__flag card__flag--feat">
+                      ★ <TT k="proj.featured" />
+                    </div>
+                  )}
+                  {p.priv && (
+                    <div className="card__flag card__flag--priv">
+                      <TT k="proj.private" />
+                    </div>
+                  )}
 
                   <div className="card__body">
                     <div className="card__cats">{p.cats.map(cat).join(' • ')}</div>
@@ -86,11 +99,13 @@ export default function ProjectsIndex() {
 
           <div className="panel proj-cta">
             <span className="dots" aria-hidden="true" />
-            <h2>{t('pages.ctaTitle')}</h2>
+            <h2>
+              <TT k="pages.ctaTitle" />
+            </h2>
             <p>{t('pages.ctaText')}</p>
-            <a className="btn btn--yellow" href={`${home}#contact`}>
-              {t('pages.ctaButton')}
-            </a>
+            <button type="button" className="btn btn--yellow" onClick={() => openQuote()}>
+              <TT k="pages.ctaButton" />
+            </button>
           </div>
         </div>
       </main>

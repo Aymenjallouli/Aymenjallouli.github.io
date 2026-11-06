@@ -9,9 +9,11 @@ import Stats from '@/sections/Stats';
 import Origin from '@/sections/Origin';
 import Powers from '@/sections/Powers';
 import Work from '@/sections/Work';
+import Services from '@/sections/Services';
 import CallToAction from '@/sections/CallToAction';
 import Contact from '@/sections/Contact';
 import SiteFooter from '@/sections/SiteFooter';
+import Guide from '@/components/Guide';
 import { useLanguage } from '@/lib/LanguageContext';
 
 /** Appears once you're past the hero; returns you to the top. */
@@ -66,6 +68,7 @@ export default function HomePage() {
         <Origin />
         <Powers />
         <Work />
+        <Services />
         <Marquee text={t('marquee2')} variant="yellow" />
         <CallToAction />
         <Contact />
@@ -73,6 +76,7 @@ export default function HomePage() {
 
       <SiteFooter />
       <BackToTop label={t('a11y.top')} />
+      <Guide />
     </div>
   );
 }

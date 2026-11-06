@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { WebCorner } from '@/components/icons';
+import { WebCorner, WhatsAppIcon } from '@/components/icons';
+import TT, { Dual } from '@/components/ThemeText';
+import { useQuote } from '@/components/QuoteProvider';
+import { whatsappUrl } from '@/lib/pricing';
 import { useCanHover, useReducedMotion } from '@/lib/useMedia';
 
 /* Served straight from public/ — plain <img> keeps the comic-panel CSS in
@@ -18,8 +21,12 @@ const cvEn = '/assets/Aymen_Jallouli_CV_EN.pdf';
    the real heading and both glitch layers so all three stay pixel-identical. */
 const NAME = (
   <>
-    <span className="hero__l1">AYMEN</span>
-    <span className="hero__l2">JALLOULI</span>
+    <span className="hero__l1">
+      <Dual spidey="AYMEN" pro="Aymen" />
+    </span>
+    <span className="hero__l2">
+      <Dual spidey="JALLOULI" pro="Jallouli" />
+    </span>
   </>
 );
 
@@ -67,10 +74,11 @@ function useTypewriter(words, enabled) {
 }
 
 const Hero = () => {
-  const { lang, t } = useLanguage();
+  const { lang, t, tp } = useLanguage();
   const canHover = useCanHover();
   const reduced = useReducedMotion();
   const [open, setOpen] = useState(false);
+  const { open: openQuote } = useQuote();
   const typed = useTypewriter(t('hero.roles'), !reduced);
   const titleRef = useRef(null);
 
@@ -83,22 +91,26 @@ const Hero = () => {
       <div className="dots hero__rays" />
       <div className="dots hero__halftone" />
       <WebCorner className="hero__web-tl" />
-      <img className="hero__lines-a" src={webLines} alt="" aria-hidden="true" />
-      <img className="hero__lines-b" src={webLines} alt="" aria-hidden="true" />
-      <img className="hero__crawler" src={spiderSvg} alt="" aria-hidden="true" />
+      {/* Comic-only decoration: lazy, so the default pro theme (where these are
+          display:none) never downloads them. */}
+      <img className="hero__lines-a" src={webLines} alt="" aria-hidden="true" loading="lazy" />
+      <img className="hero__lines-b" src={webLines} alt="" aria-hidden="true" loading="lazy" />
+      <img className="hero__crawler" src={spiderSvg} alt="" aria-hidden="true" loading="lazy" />
 
       <div className="thread thread--drop" aria-hidden="true">
         <div className="thread__line" />
-        <img src={spiderSvg} alt="" />
+        <img src={spiderSvg} alt="" loading="lazy" />
       </div>
       <div className="thread thread--swing" aria-hidden="true">
         <div className="thread__line" />
-        <img className="thread__spider" src={spiderSvg} alt="" />
+        <img className="thread__spider" src={spiderSvg} alt="" loading="lazy" />
       </div>
 
       <div className="hero__grid">
         <div className="hero__copy">
-          <div className="tag hero__meanwhile">{t('hero.meanwhile')}</div>
+          <div className="tag hero__meanwhile">
+            <TT k="hero.meanwhile" />
+          </div>
           <div className="hero__friendly">{t('hero.friendly')}</div>
 
           <div className="hero__title-wrap" ref={titleRef}>
@@ -137,13 +149,13 @@ const Hero = () => {
 
           <div className="hero__ctas">
             <a href="#projects" className="btn btn--red">
-              {t('hero.cta1')}
+              <TT k="hero.cta1" />
             </a>
-            <a href={cvHref} download={`Aymen_Jallouli_CV_${lang.toUpperCase()}.pdf`} className="btn btn--yellow">
-              {t('hero.cta2')}
-            </a>
-            <a href="#contact" className="btn btn--ghost">
-              {t('hero.cta3')}
+            <button type="button" className="btn btn--yellow" onClick={() => openQuote()}>
+              <TT k="hero.cta2" />
+            </button>
+            <a href={cvHref} download={`Aymen_Jallouli_CV_${lang.toUpperCase()}.pdf`} className="btn btn--ghost">
+              <TT k="hero.cta3" />
             </a>
           </div>
 
@@ -154,10 +166,72 @@ const Hero = () => {
             <a className="pill" href="https://www.linkedin.com/in/aymen-jallouli-713534254/" target="_blank" rel="noopener noreferrer">
               LINKEDIN
             </a>
+            <a className="pill pill--wa" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+              <WhatsAppIcon size={15} /> WHATSAPP
+            </a>
           </div>
         </div>
 
         <div className="hero__art">
+          {/* Pro theme: a clean portrait card. The comic mask below is hidden
+              in that theme, and vice versa. */}
+          <div className="pro-portrait th-p">
+            <div className="pro-portrait__frame">
+              <img className="pro-portrait__img" src={profileCut} alt="Aymen Jallouli" width="1012" height="1024" fetchPriority="high" />
+            </div>
+
+            <div className="pro-portrait__chip pro-portrait__chip--a" aria-hidden="true">
+              <strong>20+</strong>
+              <span>{t('hero.chipProjects')}</span>
+            </div>
+
+            {/* rotating "let's work together" seal — opens the quote builder */}
+            <button type="button" className="pro-badge" onClick={() => openQuote()} aria-label={tp('hero.cta2')}>
+              <svg className="pro-badge__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                <defs>
+                  <path id="pro-badge-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+                </defs>
+                <text>
+                  <textPath href="#pro-badge-circle" textLength="236" lengthAdjust="spacing">
+                    {t('hero.badgeRing')}
+                  </textPath>
+                </text>
+              </svg>
+              <span className="pro-badge__core" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M9 7h8v8" />
+                </svg>
+              </span>
+            </button>
+
+            {/* a tiny editor window — the developer's business card */}
+            <div className="pro-code" aria-hidden="true">
+              <div className="pro-code__bar">
+                <i />
+                <i />
+                <i />
+                <span>aymen.ts</span>
+              </div>
+              <code className="pro-code__body">
+                <span className="pro-code__ln">
+                  <b className="tk-k">const</b> <b className="tk-v">aymen</b> <b className="tk-p">=</b> {'{'}
+                </span>
+                <span className="pro-code__ln pro-code__in">
+                  stack<b className="tk-p">:</b> [<b className="tk-s">&apos;React&apos;</b>, <b className="tk-s">&apos;Node&apos;</b>,{' '}
+                  <b className="tk-s">&apos;AWS&apos;</b>],
+                </span>
+                <span className="pro-code__ln pro-code__in">
+                  experience<b className="tk-p">:</b> <b className="tk-s">&apos;3+ years&apos;</b>,
+                </span>
+                <span className="pro-code__ln pro-code__in">
+                  available<b className="tk-p">:</b> <b className="tk-b">true</b>
+                  <i className="pro-code__cursor" />
+                </span>
+                <span className="pro-code__ln">{'};'}</span>
+              </code>
+            </div>
+          </div>
+
           <div className="pow pow--thwip" aria-hidden="true">
             THWIP !
           </div>
@@ -176,13 +250,13 @@ const Hero = () => {
           >
             <span className="mask__stage">
               <span className="mask__glow" aria-hidden="true" />
-              <img className="mask__img mask__img--hero" src={spiderCutout} alt="Spider-Man" />
+              <img className="mask__img mask__img--hero" src={spiderCutout} alt="Spider-Man" loading="lazy" />
               <img className="mask__img mask__img--face" src={profileCut} alt="Aymen Jallouli" />
-              <img className="mask__spider" src={spiderSvg} alt="" aria-hidden="true" />
+              <img className="mask__spider" src={spiderSvg} alt="" aria-hidden="true" loading="lazy" />
               <span className="grabber" aria-hidden="true">
                 <span className="grabber__inner">
                   <span className="grabber__thread" />
-                  <img className="grabber__spider" src={spiderSvg} alt="" />
+                  <img className="grabber__spider" src={spiderSvg} alt="" loading="lazy" />
                 </span>
               </span>
             </span>

@@ -6,12 +6,15 @@ import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 import { pagePaths } from '@/lib/seo';
 import { SpiderMark } from './icons';
+import ThemeToggle from './ThemeToggle';
+import { Dual } from './ThemeText';
 
 const SECTIONS = [
   { id: 'home', key: 'home' },
   { id: 'origin', key: 'about' },
   { id: 'powers', key: 'powers' },
   { id: 'projects', key: 'projects' },
+  { id: 'services', key: 'services' },
   { id: 'contact', key: 'contact' },
 ];
 
@@ -23,7 +26,7 @@ const SECTIONS = [
  * @param spy    Scroll-spy only makes sense where the sections actually exist.
  */
 const Nav = ({ base = '', paths = pagePaths.home, spy = true }) => {
-  const { lang, t } = useLanguage();
+  const { lang, t, tp } = useLanguage();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('home');
 
@@ -63,7 +66,7 @@ const Nav = ({ base = '', paths = pagePaths.home, spy = true }) => {
       if (e.key === 'Escape') setOpen(false);
     };
     const onResize = () => {
-      if (window.innerWidth > 980) setOpen(false);
+      if (window.innerWidth > 1120) setOpen(false);
     };
     window.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
@@ -95,10 +98,15 @@ const Nav = ({ base = '', paths = pagePaths.home, spy = true }) => {
     <>
       <nav className="nav">
         <a href={href('home')} className="nav__brand" onClick={close}>
-          <span className="nav__mark">
+          <span className="nav__mark th-s">
             <SpiderMark size={24} />
           </span>
-          <span className="nav__name">AYMEN JALLOULI</span>
+          <span className="nav__mono th-p" aria-hidden="true">
+            AJ
+          </span>
+          <span className="nav__name">
+            <Dual spidey="AYMEN JALLOULI" pro="Aymen Jallouli" />
+          </span>
           <span className="nav__num">N° 26</span>
         </a>
 
@@ -106,10 +114,11 @@ const Nav = ({ base = '', paths = pagePaths.home, spy = true }) => {
           <div className="nav__links">
             {SECTIONS.map((s) => (
               <a key={s.id} href={href(s.id)} className={`nav__link${active === s.id ? ' is-active' : ''}`}>
-                {t(`nav.${s.key}`)}
+                <Dual spidey={t(`nav.${s.key}`)} pro={tp(`nav.${s.key}`)} />
               </a>
             ))}
           </div>
+          <ThemeToggle />
           {langLinks}
           <button
             type="button"
@@ -129,7 +138,7 @@ const Nav = ({ base = '', paths = pagePaths.home, spy = true }) => {
       <div id="mobile-menu" className={`drawer${open ? ' is-open' : ''}`}>
         {SECTIONS.map((s) => (
           <a key={s.id} href={href(s.id)} className={active === s.id ? 'is-active' : ''} onClick={close}>
-            {t(`nav.${s.key}`)}
+            <Dual spidey={t(`nav.${s.key}`)} pro={tp(`nav.${s.key}`)} />
           </a>
         ))}
         <div className="drawer__foot">

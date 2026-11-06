@@ -2,42 +2,51 @@
 
 import { useLanguage } from '@/lib/LanguageContext';
 import { SpiderMark, WebCorner } from '@/components/icons';
+import TT, { Dual } from '@/components/ThemeText';
 const spiderSvg = '/assets/spidey/spider.svg';
 
 const LINKS = [
   { id: 'home', key: 'home' },
   { id: 'origin', key: 'about' },
   { id: 'projects', key: 'projects' },
+  { id: 'services', key: 'services' },
   { id: 'contact', key: 'contact' },
 ];
 
 /** `base` prefixes the in-page anchors so the footer also works off-homepage. */
 const SiteFooter = ({ base = '' }) => {
-  const { t } = useLanguage();
+  const { t, tp } = useLanguage();
 
   return (
     <footer className="footer">
       <WebCorner className="footer__web" />
       <div className="footer__thread thread" aria-hidden="true">
         <div className="thread__line" />
-        <img src={spiderSvg} alt="" />
+        <img src={spiderSvg} alt="" loading="lazy" />
       </div>
 
       <div className="footer__grid">
         <div className="footer__brand">
           <div>
-            <span className="footer__mark">
+            <span className="footer__mark th-s">
               <SpiderMark size={20} />
             </span>
-            <span className="footer__name">AYMEN JALLOULI</span>
+            <span className="nav__mono footer__mono th-p" aria-hidden="true">
+              AJ
+            </span>
+            <span className="footer__name">
+              <Dual spidey="AYMEN JALLOULI" pro="Aymen Jallouli" />
+            </span>
           </div>
-          <p className="footer__tag">{t('footer.tagline')}</p>
+          <p className="footer__tag">
+            <TT k="footer.tagline" />
+          </p>
         </div>
 
         <div className="footer__links">
           {LINKS.map((l) => (
             <a key={l.id} href={`${base}#${l.id}`}>
-              {t(`nav.${l.key}`)}
+              <Dual spidey={t(`nav.${l.key}`)} pro={tp(`nav.${l.key}`)} />
             </a>
           ))}
         </div>

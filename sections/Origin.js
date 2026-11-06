@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/LanguageContext';
 import Reveal from '@/components/Reveal';
+import TT from '@/components/ThemeText';
 
 const Origin = () => {
   const { t } = useLanguage();
@@ -11,14 +12,16 @@ const Origin = () => {
     <section id="origin" className="origin">
       <div className="wrap">
         <div className="tag" style={{ transform: 'rotate(-1.5deg)' }}>
-          {t('about.issue')}
+          <TT k="about.issue" />
         </div>
-        <h2 className="h-section">{t('about.title')}</h2>
+        <h2 className="h-section">
+          <TT k="about.title" />
+        </h2>
 
         <div className="two-col">
           <Reveal>
             <div className="tag tag--red" style={{ transform: 'rotate(-1deg)', position: 'relative', zIndex: 2 }}>
-              {t('about.whoTitle')}
+              <TT k="about.whoTitle" />
             </div>
             <div className="panel origin__card">
               <span className="panel__dots" aria-hidden="true" />
@@ -30,7 +33,7 @@ const Origin = () => {
 
           <div>
             <div className="tag tag--red" style={{ transform: 'rotate(1deg)', position: 'relative', zIndex: 2 }}>
-              {t('about.sagaTitle')}
+              <TT k="about.sagaTitle" />
             </div>
             <div className="timeline">
               {t('about.timeline').map((tl, i) => (
