@@ -55,6 +55,19 @@ export default function ProjectPage({ slug }) {
           <h1 className="proj-page__title">{project.t}</h1>
           <p className="proj-page__lead">{project[lang]}</p>
 
+          {/* Said up front, in words: a concept is not a client, and a project
+              in development is not live. */}
+          {project.concept && (
+            <p className="proj-note proj-note--concept" role="note">
+              {t('pages.conceptNote')}
+            </p>
+          )}
+          {project.wip && (
+            <p className="proj-note proj-note--wip" role="note">
+              {t('pages.wipNote')}
+            </p>
+          )}
+
           <div className="proj-page__actions">
             {project.live && (
               <a className="btn btn--red" href={project.live} target="_blank" rel="noopener noreferrer">

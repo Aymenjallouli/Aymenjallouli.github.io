@@ -74,6 +74,16 @@ export default function ProjectsIndex() {
                       <TT k="proj.private" />
                     </div>
                   )}
+                  {p.concept && (
+                    <div className="card__flag card__flag--concept">
+                      <TT k="proj.concept" />
+                    </div>
+                  )}
+                  {p.wip && (
+                    <div className="card__flag card__flag--wip">
+                      <TT k="proj.wip" />
+                    </div>
+                  )}
 
                   <div className="card__body">
                     <div className="card__cats">{p.cats.map(cat).join(' • ')}</div>

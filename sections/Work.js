@@ -78,6 +78,16 @@ const Work = () => {
                     <TT k="proj.private" />
                   </div>
                 )}
+                {p.concept && (
+                  <div className="card__flag card__flag--concept">
+                    <TT k="proj.concept" />
+                  </div>
+                )}
+                {p.wip && (
+                  <div className="card__flag card__flag--wip">
+                    <TT k="proj.wip" />
+                  </div>
+                )}
 
                 <div className="card__body">
                   <div className="card__cats">{p.cats.map((c) => CATEGORY_LABELS[lang][c]).join(' • ')}</div>
@@ -110,6 +120,7 @@ const Work = () => {
                       </a>
                     )}
                     {p.priv && <span className="mini mini--priv">{t('proj.privateTitle')}</span>}
+                    {p.wip && !p.live && <span className="mini mini--priv">{t('proj.wipTitle')}</span>}
                   </div>
                 </div>
               </article>

@@ -10,6 +10,12 @@ const RETIRED_SLUGS = [
   'fit4you-gabes',
   'oconnors-irish-pub-sousse',
   'the-zoo-bar-tunis',
+  // removed 2026-11-07
+  'platinum-gym-gabes',
+  'bel-air-gammarth',
+  'pastagram-pasta-bar-sousse',
+  'cabinet-dentaire-dr-chaima-harb-gabes',
+  'cabinet-salma-kinesitherapie-ariana',
 ];
 
 /** @type {import('next').NextConfig} */
